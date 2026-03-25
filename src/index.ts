@@ -1,18 +1,16 @@
-/**
- * \@savvy-web/example-module
- *
- * Version-aware type definition registry for TypeScript documentation with Twoslash.
- * Built with Effect for robust error handling and composable async operations.
- *
- * @packageDocumentation
- */
+import { Console, Effect } from "effect";
 
-export interface Foo {
-	baz: number;
-}
+// A simple Effect program that demonstrates basic patterns
+const program = Effect.gen(function* () {
+	yield* Console.log("Hello from Effect!");
 
-export class Bar {
-	qux(): Foo {
-		return { baz: 42 };
-	}
-}
+	const result = yield* Effect.succeed(42);
+	yield* Console.log(`The answer is: ${result}`);
+
+	return result;
+});
+
+// Run the program
+Effect.runPromise(program).then((result) => {
+	console.log(`Program completed with: ${result}`);
+});
