@@ -19,7 +19,7 @@
 		".": "./src/index.ts"
 	},
 	"scripts": {
-		"build": "turbo run build:dev build:prod --log-order=grouped",
+		"build": "turbo run build:dev build:prod --log-order=grouped --log-prefix=none",
 		"build:dev": "rslib build --config-loader native --env-mode dev",
 		"build:inspect": "rslib inspect --config-loader native --env-mode npm --verbose",
 		"build:prod": "rslib build --config-loader native --env-mode npm",
@@ -34,7 +34,7 @@
 		"lint:md": "markdownlint-cli2 '**/*.{md,mdx}' --config './lib/configs/.markdownlint-cli2.jsonc'",
 		"lint:md:fix": "markdownlint-cli2  --config './lib/configs/.markdownlint-cli2.jsonc' --fix",
 		"prepare": "husky",
-		"start": "tsx src/index.ts",
+		"start": "tsx src/run.ts",
 		"test": "vitest run",
 		"test:coverage": "vitest run --coverage",
 		"test:watch": "vitest --watch",
@@ -42,6 +42,7 @@
 		"types:check": "tsgo --noEmit"
 	},
 	"dependencies": {
+		"@effect/experimental": "catalog:silk",
 		"@effect/platform": "catalog:silk",
 		"@effect/platform-node": "catalog:silk",
 		"effect": "catalog:silk"

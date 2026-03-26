@@ -1,16 +1,54 @@
-import { Console, Effect } from "effect";
+/**
+ * Effect Playground - Library Exports
+ *
+ * This module re-exports all public APIs from the library:
+ *
+ * **Schemas** (data definitions)
+ * - {@link User} - User entity schema
+ *
+ * **Services** (interfaces)
+ * - {@link Logger} - Logging service with Live, Silent, and Test implementations
+ * - {@link UserService} - User management service
+ *
+ * **Layers** (implementations)
+ * - {@link UserServiceLive} - Requires Logger dependency
+ * - {@link UserServiceWithLogging} - Pre-composed with Logger.Live
+ * - {@link UserServiceSilent} - Pre-composed with Logger.Silent
+ *
+ * **Programs**
+ * - {@link program} - Demo program showcasing the patterns
+ *
+ * @example
+ * ```ts
+ * import { Effect } from "effect";
+ * import { UserService, UserServiceWithLogging } from "./index.js";
+ *
+ * const myProgram = Effect.gen(function* () {
+ *   const users = yield* UserService;
+ *   return yield* users.create("Alice");
+ * });
+ *
+ * myProgram.pipe(Effect.provide(UserServiceWithLogging));
+ * ```
+ *
+ * @packageDocumentation
+ */
 
-// A simple Effect program that demonstrates basic patterns
-const program = Effect.gen(function* () {
-	yield* Console.log("Hello from Effect!");
+// Programs
+export { program } from "./apps/demo.js";
 
-	const result = yield* Effect.succeed(42);
-	yield* Console.log(`The answer is: ${result}`);
+// Schemas
+export { User } from "./schemas/UserSchema.js";
 
-	return result;
-});
-
-// Run the program
-Effect.runPromise(program).then((result) => {
-	console.log(`Program completed with: ${result}`);
-});
+// Services + Layers
+export type { LogEntry, LoggerTestInstance } from "./services/LoggerService.js";
+export { Logger } from "./services/LoggerService.js";
+export type { DeleteResult } from "./services/UserService.js";
+export {
+	DeleteResult as DeleteResultConstructors,
+	UserNotFound,
+	UserService,
+	UserServiceLive,
+	UserServiceSilent,
+	UserServiceWithLogging,
+} from "./services/UserService.js";

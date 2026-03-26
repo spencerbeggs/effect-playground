@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   silk:
+    '@effect/experimental':
+      specifier: ^0.60.0
+      version: 0.60.0
     '@effect/platform':
       specifier: ^0.96.0
       version: 0.96.0
@@ -29,6 +32,9 @@ importers:
 
   .:
     dependencies:
+      '@effect/experimental':
+        specifier: catalog:silk
+        version: 0.60.0(@effect/platform@0.96.0(effect@3.21.0))(effect@3.21.0)
       '@effect/platform':
         specifier: catalog:silk
         version: 0.96.0(effect@3.21.0)

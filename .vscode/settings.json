@@ -43,8 +43,8 @@
 		"**/.turbo": true,
 		"**/.vitest": true,
 		"**/*.tsbuildinfo": true,
-		"**/dist": false,
-		"**/node_modules": false
+		"**/dist": true,
+		"**/node_modules": true
 	},
 	"gitlens.statusBar.pullRequests.enabled": true,
 	"gitlens.gitkraken.cli.integration.enabled": true,
@@ -113,5 +113,7 @@
 	"markdown.styles": [".vscode/static/github-markdown.css"],
 	"vitest.disableWorkspaceWarning": true,
 	"js/ts.tsdk.path": "./node_modules/typescript/lib",
+	"js/ts.experimental.useTsgo": false,
+	"js/ts.tsdk.promptToUseWorkspaceVersion": true,
 	"js/ts.tsserver.log": "verbose"
 }

@@ -35,18 +35,24 @@ Use the Effect-related skills when relevant:
 
 ```text
 src/
-├── index.ts          # Main entry point / current experiment
-├── apps/             # CLI applications and runnable programs
-├── errors/           # Custom TaggedError definitions
-├── layers/           # Service Layer implementations
-├── schemas/          # Effect Schema definitions
-└── utils/            # Helper functions and utilities
+├── index.ts          # Library exports (barrel)
+├── run.ts            # Entry point (wires layers, runs program)
+├── apps/             # Runnable programs (decoupled from implementations)
+├── schemas/          # Effect Schema definitions (data shapes)
+└── services/         # Service interfaces + layer implementations
 ```
+
+Services are self-contained: interface, errors, and all layer implementations
+live in the same file (e.g., `UserService.ts` contains the tag, error types,
+`UserServiceLive`, and pre-composed convenience layers).
 
 ## Commands
 
 ```bash
-pnpm start             # Run src/index.ts with tsx
+pnpm start             # Run src/run.ts with tsx
+pnpm start debug       # Run with debug log level
+pnpm start info        # Run with info log level (default)
+pnpm start none        # Run with no logging
 pnpm test              # Run tests
 pnpm test:watch        # Run tests in watch mode
 pnpm typecheck         # Type-check with tsgo
@@ -85,8 +91,86 @@ Press `F5` in VS Code to debug. Two configurations available:
 - Use `Schema` for runtime validation and type inference
 - Use `TaggedError` for typed, recoverable errors
 
+### Naming Patterns
+
+Services follow this naming convention:
+
+| Entity | Pattern | Example |
+| ------ | ------- | ------- |
+| Service interface | `ServiceName` | `UserService`, `Logger` |
+| Live implementation | `ServiceNameLive` | `UserServiceLive` |
+| Pre-composed layers | `ServiceNameWith*` | `UserServiceWithLogging` |
+| Silent/test variant | `ServiceNameSilent` | `UserServiceSilent` |
+| Static implementations | `ServiceName.Live`, `.Silent`, `.Test` | `Logger.Live` |
+
+For simple services like Logger, attach implementations as static properties:
+
+```typescript
+class Logger extends Context.Tag("Logger")<Logger, {...}>() {
+  static Live = Layer.succeed(Logger, {...});
+  static Silent = Layer.succeed(Logger, {...});
+  static Test = Effect.gen(function* () { ... }); // returns { layer, getLogs, ... }
+}
+```
+
+### Error Handling Patterns
+
+Use different patterns based on caller expectations:
+
+| Pattern | Return Type | When to Use |
+| ------- | ----------- | ----------- |
+| `Effect.fail` | `Effect<A, E>` | Caller **expects** success |
+| `Option` | `Effect<Option<A>>` | Caller knows it **might not** exist |
+| Result type | `Effect<Result>` | Caller wants **info** about what happened |
+| `Effect.die` | crashes | Programming error, should never happen |
+
+Example: `getById` fails (expects user), `findById` returns Option (might not exist),
+`deleteById` returns `DeleteResult` (info about what happened).
+
 ## Testing
 
 - **Framework**: Vitest with v8 coverage
-- **Run single test**: `pnpm vitest run src/path/to/file.test.ts`
-- Effect tests typically use `Effect.runPromise` or `@effect/vitest`
+- **Location**: `__test__/` directory mirrors `src/` structure
+- **Run single test**: `pnpm vitest run __test__/path/to/file.test.ts`
+
+### Test Pattern with Logger.Test
+
+Use `Logger.Test` to capture logs for assertions:
+
+```typescript
+import { Effect, Layer } from "effect";
+import { Logger } from "../../src/services/LoggerService.js";
+import { UserService, UserServiceLive } from "../../src/services/UserService.js";
+
+it("creates a user", async () => {
+  const test = Effect.gen(function* () {
+    // 1. Create capturing logger
+    const testLogger = yield* Logger.Test;
+
+    // 2. Compose layer with test logger
+    const layer = Layer.provide(UserServiceLive, testLogger.layer);
+
+    // 3. Run effect with layer
+    const result = yield* Effect.gen(function* () {
+      const users = yield* UserService;
+      return yield* users.create("Alice");
+    }).pipe(Effect.provide(layer));
+
+    // 4. Assert on result
+    expect(result.name).toBe("Alice");
+
+    // 5. Assert on captured logs
+    const logs = yield* testLogger.getMessages;
+    expect(logs).toContain("Created user: Alice (id=1)");
+  });
+
+  await Effect.runPromise(test);
+});
+```
+
+Key points:
+
+- `Logger.Test` creates a fresh capturing logger per test
+- Use `Layer.provide(ServiceLive, testLogger.layer)` to compose
+- `testLogger.getMessages` returns an Effect with captured log strings
+- `testLogger.getLogsByLevel("debug")` filters by level

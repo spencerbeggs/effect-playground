@@ -7,22 +7,26 @@
 			"type": "node",
 			"request": "launch",
 			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
-			"args": ["${file}"],
+			"args": ["--inspect", "${file}"],
 			"cwd": "${workspaceFolder}",
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
-			"skipFiles": ["<node_internals>/**", "node_modules/**"]
+			"skipFiles": ["<node_internals>/**", "node_modules/**"],
+			"sourceMaps": true,
+			"resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
 		},
 		{
 			"name": "Debug index.ts",
 			"type": "node",
 			"request": "launch",
 			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
-			"args": ["src/index.ts"],
+			"args": ["--inspect", "src/index.ts"],
 			"cwd": "${workspaceFolder}",
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
-			"skipFiles": ["<node_internals>/**", "node_modules/**"]
+			"skipFiles": ["<node_internals>/**", "node_modules/**"],
+			"sourceMaps": true,
+			"resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
 		}
 	]
 }
