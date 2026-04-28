@@ -48,7 +48,7 @@
 		"effect": "catalog:silk"
 	},
 	"devDependencies": {
-		"@effect/language-service": "^0.83.1",
+		"@effect/language-service": "^0.85.1",
 		"@savvy-web/changesets": "^0.8.0",
 		"@savvy-web/commitlint": "^0.6.0",
 		"@savvy-web/lint-staged": "^1.0.0",
