@@ -13,15 +13,8 @@
  *   silent  - No log output
  */
 import { NodeRuntime } from "@effect/platform-node";
-import { Console, Effect, Layer, LogLevel, Logger } from "effect";
-import {
-	LogAll,
-	LogInfo,
-	LogNone,
-	LogWarn,
-	UserServiceNative,
-	UserServiceNativeLive,
-} from "../services/UserServiceNative.js";
+import { Console, Effect, LogLevel, Logger } from "effect";
+import { UserServiceNative, UserServiceNativeLive } from "../services/UserServiceNative.js";
 
 const program = Effect.gen(function* () {
 	const users = yield* UserServiceNative;
