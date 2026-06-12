@@ -43,8 +43,8 @@
 		"**/.turbo": true,
 		"**/.vitest": true,
 		"**/*.tsbuildinfo": true,
-		"**/dist": true,
-		"**/node_modules": true
+		"**/dist": false,
+		"**/node_modules": false
 	},
 	"gitlens.statusBar.pullRequests.enabled": true,
 	"gitlens.gitkraken.cli.integration.enabled": true,
