@@ -32,7 +32,7 @@ catalogs:
       version: 0.60.0
     '@effect/language-service':
       specifier: ^0.86.4
-      version: 0.86.4
+      version: 0.86.6
     '@effect/platform':
       specifier: ^0.96.2
       version: 0.96.2
@@ -70,13 +70,13 @@ importers:
     devDependencies:
       '@effect/language-service':
         specifier: catalog:silk
-        version: 0.86.4
+        version: 0.86.6
       '@savvy-web/bundler':
         specifier: ^1.1.9
         version: 1.1.9(@types/node@26.1.1)(@typescript/native-preview@7.0.0-dev.20260707.2)(react@19.2.7)(tsx@4.23.0)(typescript@6.0.3)
       '@savvy-web/silk':
-        specifier: ^2.2.3
-        version: 2.2.3(@changesets/cli@3.0.0-next.8)(@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.0.1)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@types/node@26.1.1)(@typescript/native-preview@7.0.0-dev.20260707.2)(commitizen@4.3.2(@types/node@26.1.1)(typescript@6.0.3))(husky@9.1.7)(lint-staged@17.0.8)(markdownlint-cli2-formatter-codequality@0.0.7(markdownlint-cli2@0.23.0))(markdownlint-cli2@0.23.0)(turbo@2.10.4)(typescript@6.0.3)
+        specifier: ^2.3.0
+        version: 2.3.0(@changesets/cli@3.0.0-next.8)(@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.1.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@types/node@26.1.1)(@typescript/native-preview@7.0.0-dev.20260707.2)(commitizen@4.3.2(@types/node@26.1.1)(typescript@6.0.3))(husky@9.1.7)(lint-staged@17.0.8)(markdownlint-cli2-formatter-codequality@0.0.7(markdownlint-cli2@0.23.0))(markdownlint-cli2@0.23.0)(turbo@2.10.4)(typescript@6.0.3)
       '@vitest-agent/plugin':
         specifier: ^1.1.8
         version: 1.1.8(@vitest/coverage-istanbul@4.1.10)(@vitest/coverage-v8@4.1.10)(typescript@6.0.3)(vitest@4.1.10)
@@ -354,8 +354,8 @@ packages:
       lmdb:
         optional: true
 
-  '@effect/language-service@0.86.4':
-    resolution: {integrity: sha512-XzAPsbwCdm0gRh0E8wJu3wXECb00QraE3LnbObA4RgHn8u2TEbwAjmBadRnwSgOIElfzZjbsRqNR706/V54hDg==}
+  '@effect/language-service@0.86.6':
+    resolution: {integrity: sha512-uwXbp+lWzt60bZnm6lG6S5DWy0m6TthUzV2hcQoiS6NzieEDm07tuBakscxOXoO+AU9+yTH+0TSIa9mEDt9dFA==}
     hasBin: true
 
   '@effect/platform-node-shared@0.60.0':
@@ -983,22 +983,22 @@ packages:
   '@savvy-web/changelog@0.1.1':
     resolution: {integrity: sha512-UR0PEbLzFlLpz78jIDxTAfSc73TVQoZNZfGGzeBFP/s6wG8y3m5KUJwzY6CsisBxJrI44wOMBYdWztTM21PgJw==}
 
-  '@savvy-web/cli@1.5.6':
-    resolution: {integrity: sha512-hg1IIPHBBdzwxkM5xbzY6QPABVCBcpApMDqpCZMtTeu0GKTVgxskg+8AS8gHgK/J8qKNHuY9hRoG5dGsZzHsgQ==}
+  '@savvy-web/cli@1.5.8':
+    resolution: {integrity: sha512-UIaKumpHfx8q52fO9FModKQIzc6SvIMLqeS8xaIC/cWBUKm+8WDZ3AVxHfaKiPyfZXJwqcv8iB/In8eihbI9dg==}
     hasBin: true
 
-  '@savvy-web/mcp@1.7.3':
-    resolution: {integrity: sha512-HNy0PObcQrVXfPLV0hO05F1I0/jTseIvXI1xn0jYgg+YXsvsiGxnaBGtt4H0S3NT+5pjZWyjI2rbv9O3/0aZrQ==}
+  '@savvy-web/mcp@1.7.4':
+    resolution: {integrity: sha512-CW0woUmg7uuZig0GFsIp146hLVGyxIfej4dwbUeGl5SpKNC58Nq8rO9EFD8YI7Hw/yYDwapJZfUoLH5j/DynCQ==}
     hasBin: true
 
-  '@savvy-web/silk-effects@3.2.2':
-    resolution: {integrity: sha512-kqzv/6ROwpl7vY+cAOZhcSJqgKPiHj5R4+GsuqLAXreriTEH9zSEc41zf868sEbUGbef3VV9QwAPYsm1Fnicgw==}
+  '@savvy-web/silk-effects@3.2.3':
+    resolution: {integrity: sha512-F8LFYaicCrfyBr3A1eLt+8fug8YsyO2x2+bBG7E72gCG72jENQgGTGpiIgnKPst+ak3MUXX18XI16S3AohO0ow==}
     peerDependencies:
       '@effect/platform': ^0.96.0
       effect: ^3.21.0
 
-  '@savvy-web/silk@2.2.3':
-    resolution: {integrity: sha512-aeuaivB9P37yGEqf6RA8bMGrKsvjSRu3I6jJS0Ir+4gbEAv/J1YUs4Yq3fIT1DhvM7wtrtVVZ77NHzsqB0ESSA==}
+  '@savvy-web/silk@2.3.0':
+    resolution: {integrity: sha512-VW4iJcvmJNx7H3gGyjnL8Qc6bVK2hp60x3yzUJDdIXCY1pIW7srspmTMCV9SuNtM5GL++bZJtSMavoH8DQ7RKA==}
     peerDependencies:
       '@biomejs/biome': ~2.5.0
       '@changesets/cli': ^3.0.0-next.8
@@ -1279,125 +1279,125 @@ packages:
   '@vitest/utils@4.1.10':
     resolution: {integrity: sha512-fy9am/HWxbaGt/Sawrp90vt6Y6jQwf1RX77cz3uwoJwJVMli/e1IEwRPnMNJ7vKfPTwo0diXifkpPvwH9v7nGA==}
 
-  '@yuku-codegen/binding-darwin-arm64@0.5.44':
-    resolution: {integrity: sha512-mpZc7hrjl/qxcbEMS6vVLE0lO4DjiXCvrp3gYbZ58bbmsSxSGCTlOCA0lpeLXAKOZxe0ZrVoqKteaewFF2Vbuw==}
+  '@yuku-codegen/binding-darwin-arm64@0.5.46':
+    resolution: {integrity: sha512-Kb3ULHGCN3lCfFj8L6YzSeIg1rcpXRuzbDc47KYBdK9R/8YW9HWKWfHji+WF/91QiCDb7u0VMhHgB/dPjpT2qg==}
     cpu: [arm64]
     os: [darwin]
 
-  '@yuku-codegen/binding-darwin-x64@0.5.44':
-    resolution: {integrity: sha512-PCt776PnGtnQYimxk18IyvPf/BQ6CNU95W+6eaoQfeME8ra+7v3pNNoTAmLfSveUC9KZPaoajR9NqkKfEVjA2Q==}
+  '@yuku-codegen/binding-darwin-x64@0.5.46':
+    resolution: {integrity: sha512-5yJZFGJOU2ijYcD1gr7ooIlzqOTArE0YPNWEC2LlLGjqcYUpC3wPU+FVtDO1xLW60oJQlG2T54pbYsuXCsTdMA==}
     cpu: [x64]
     os: [darwin]
 
-  '@yuku-codegen/binding-freebsd-x64@0.5.44':
-    resolution: {integrity: sha512-5MNu1R4ysytPLMdl1UlGyjgAbUdT8fguW/QRo+pyEymbuWRN5n8JEHCFpm4AsWdP61fStagSpPDJcwN+mwC9Lg==}
+  '@yuku-codegen/binding-freebsd-x64@0.5.46':
+    resolution: {integrity: sha512-5K6x+Ll4qcfoU1lfDvkpK7i3r8a+bJYsE3zj8SnRoAHSu21au53E4c3XE1u8KlHo8JIiMsT6W8ZyXM3QKdSymQ==}
     cpu: [x64]
     os: [freebsd]
 
-  '@yuku-codegen/binding-linux-arm-gnu@0.5.44':
-    resolution: {integrity: sha512-xbP2qQ7/h6ZZKeckCiI2osB5SE5PBfLb4uzIfO1BSTX+9rlBKTqomxDaCib7aPf2X1CXMiIq+i7AK1EhBa5a7A==}
+  '@yuku-codegen/binding-linux-arm-gnu@0.5.46':
+    resolution: {integrity: sha512-biSavMngiyj1kk0BPvAAHm2y6Xw87cXzjfZtPHA0zETz0CwZLz8NLxe3K8ZroEJb1jZUCMhV6SnMR86gB5s8bA==}
     cpu: [arm]
     os: [linux]
     libc: [glibc]
 
-  '@yuku-codegen/binding-linux-arm-musl@0.5.44':
-    resolution: {integrity: sha512-gmXKMCpgkUm5PllGMKBMoBmqgbTQkx+S85eE46LctuwTSKS/K7u65NE6t4zk6cLDvZpV67enycKXBORWn6q7xA==}
+  '@yuku-codegen/binding-linux-arm-musl@0.5.46':
+    resolution: {integrity: sha512-1Tuduchx+rt3xeWnZtLB430UYjP6mY2xhG3lw72q1YrFl9fHEvwzKaA9Uuiq3BkMhz5x5urIpfLV8XAf20Nqgw==}
     cpu: [arm]
     os: [linux]
     libc: [musl]
 
-  '@yuku-codegen/binding-linux-arm64-gnu@0.5.44':
-    resolution: {integrity: sha512-eOoejNUtnHs1/TMn4wryOAG/TarvlOqSZtRPeS56liBKp/GVQSirqTM9AITSGPLSdK1u7fZWMdj5IOEoJp3ruw==}
+  '@yuku-codegen/binding-linux-arm64-gnu@0.5.46':
+    resolution: {integrity: sha512-++sIi/yitZHeB3Xav8P88Vh+E53Ej/959FUfPdTElV4FNAwdRsEtxoNw37mASy2gkiwOhEjIIy986FXaKrYTdg==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@yuku-codegen/binding-linux-arm64-musl@0.5.44':
-    resolution: {integrity: sha512-xTzrhEMy1mdv5+SbJPPlwqlMrhXGPntE2f12TLi+dNPXhif4iXCGJpoh8pV9nwZFE/cq1ITuTnjIfTFj/PifzA==}
+  '@yuku-codegen/binding-linux-arm64-musl@0.5.46':
+    resolution: {integrity: sha512-/UMkxyjjXMX5yq6mk4Z1GdSDYWv3CMNfN2Dv7SdKwKpl6Lwp6aR+RPIiiC+oRAI5PaFrrorJIg3BloU3ss/sLQ==}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@yuku-codegen/binding-linux-x64-gnu@0.5.44':
-    resolution: {integrity: sha512-2bvgIU4P+f4q18grdHoGnt9L6XlAciq/8GWpM06fmwj8qqruS8qwwwZXBk3/0U2+IHGv9pXRR8GtSXzl5n/blg==}
+  '@yuku-codegen/binding-linux-x64-gnu@0.5.46':
+    resolution: {integrity: sha512-/qtlyhxsXWGy1777IJ1RScNp2p+znbR/WJ9ZK5dZRQh0851pdJCPQALuLhEAFdQjfnT8sJPJgB61RPS9Ou6uzQ==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@yuku-codegen/binding-linux-x64-musl@0.5.44':
-    resolution: {integrity: sha512-EzX5hWK0MmU4fbqY9coc5PJ0y0LYjrBdAF7mjSyetdK/yWRGBfHi9nh0dUJ0lqb47653hxB8/r9byfYgg6ecbA==}
+  '@yuku-codegen/binding-linux-x64-musl@0.5.46':
+    resolution: {integrity: sha512-9PtrZqSNvsz7UZl5Nbol8TFB6VXMKAVbBdF/CPU/96qt3kFAeNTNO7O4SZERiPr4dDYzf8i9IxmDSoMywJyQHQ==}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@yuku-codegen/binding-win32-arm64@0.5.44':
-    resolution: {integrity: sha512-/ajGFWcOLGtmVUdxWKXDW6Ixtez68xxtmd2l95xNg8Lzs4aqbV2cy0Ns2Bzg9vjHsgDIooQlLXHpWh6HsHcy6w==}
+  '@yuku-codegen/binding-win32-arm64@0.5.46':
+    resolution: {integrity: sha512-VwW0f6z8NwpvI7DORWL9I5m2p51VF/Cz7FlemTEwMQT4DUWIvGEgqVLChty1+CVgdLros+OIIVmcgWbP1u/u2Q==}
     cpu: [arm64]
     os: [win32]
 
-  '@yuku-codegen/binding-win32-x64@0.5.44':
-    resolution: {integrity: sha512-geuJQ7FKI8YUtBgW8w72ChMfMvYy3gSytACxB4HOkylsoutrhH6lUNYHk1ny/p8u8t47NGxktpnzVJzI8IzJkA==}
+  '@yuku-codegen/binding-win32-x64@0.5.46':
+    resolution: {integrity: sha512-4l+eRLvivimYCpgODeyvaVutu7LsBxP9NexAPrTXEG+ttXNF6YcOL+ApYuC6/Jap2ojdm82t8d1wD4ExszLVrA==}
     cpu: [x64]
     os: [win32]
 
-  '@yuku-parser/binding-darwin-arm64@0.5.44':
-    resolution: {integrity: sha512-EXSW5w1YOIMyxu53MFxP43gTDeHlQueOjk8AEI9tuLF5976bDq3MXuIgzQvZKPVAirxGZu8+ANVXH1WcAH1G6A==}
+  '@yuku-parser/binding-darwin-arm64@0.5.46':
+    resolution: {integrity: sha512-k8ljigcfWnr+qEgJLBuayjXdTeXdAqS6yo0jITnDKE7zIoq73lmdAKvD5+g8pHXnfoGPzNA7+TH4z/MHwFHD4g==}
     cpu: [arm64]
     os: [darwin]
 
-  '@yuku-parser/binding-darwin-x64@0.5.44':
-    resolution: {integrity: sha512-pJBHsKxqR/nPwwaXgkkYTVo3G9dJ/AXhWsYyKyadU1zLg9gGfVwVTMehqwwutMCONDsLqOmEv/UqItmhpVsQJw==}
+  '@yuku-parser/binding-darwin-x64@0.5.46':
+    resolution: {integrity: sha512-yGeFK/ac5iWtwQyXIJbyKIFS2kODKZCVUSd/uVxFYT8OiA5KvG1jgq+Ca44ezBG2WrEyc3/IM+4sLwPRkJHp3w==}
     cpu: [x64]
     os: [darwin]
 
-  '@yuku-parser/binding-freebsd-x64@0.5.44':
-    resolution: {integrity: sha512-fOqYX5BQML94uj9hd3a+LlBNz54OoDm6l+wgUIZ8UUkOBfPV+w2lux1jj9FKXT85wwjDOFhgZ/XQYSEDK/N9mA==}
+  '@yuku-parser/binding-freebsd-x64@0.5.46':
+    resolution: {integrity: sha512-rZ8GTjrfavwS8QzYjv6OuXGWcuHJpyGCRSzDk1nfGr0d8dmdQx6htbTl/vUY8BgkiZftsiZnNeDulKjf4m0M8A==}
     cpu: [x64]
     os: [freebsd]
 
-  '@yuku-parser/binding-linux-arm-gnu@0.5.44':
-    resolution: {integrity: sha512-kA2jRNh2cbbHDbhBN9IR8CnYI4UZHNQg0OVz6+V16Ph5VlLYpfv/6GdCmvQQoTGAnhFlbQiRoQys03ey91FTew==}
+  '@yuku-parser/binding-linux-arm-gnu@0.5.46':
+    resolution: {integrity: sha512-gttOTy0Swirw40+tA5vnmraJ2xqLrY0Hn0VjPT8AIfMwUgKjefT7pvRxI8HTeLCCYHgAaNiud1LQWnvPMgUXiA==}
     cpu: [arm]
     os: [linux]
     libc: [glibc]
 
-  '@yuku-parser/binding-linux-arm-musl@0.5.44':
-    resolution: {integrity: sha512-TQ82L8c5Lxl3HBOmw0uGfCcsyw0mp7DVGwCuW24OdDWak6BKaumvB8/Ep1llPOvhk5xgSFB7fsqgh6sIwkNRew==}
+  '@yuku-parser/binding-linux-arm-musl@0.5.46':
+    resolution: {integrity: sha512-GBH7ASymEaazgC4Zo4LODpgEV4Sn3l8qQq6hTC9B7ftvfZGy8CJx0qtj0zNWH3SpOvjWjTDVVxUjRXVnHRpKDQ==}
     cpu: [arm]
     os: [linux]
     libc: [musl]
 
-  '@yuku-parser/binding-linux-arm64-gnu@0.5.44':
-    resolution: {integrity: sha512-o6up+m/MsoMEtq6h4JTzmzKOvH9o3o41vK8oiok0LOZoPOFOqOSqC+N5V2ArD1O54m5LUq6ErghAbGWiPsMsqg==}
+  '@yuku-parser/binding-linux-arm64-gnu@0.5.46':
+    resolution: {integrity: sha512-TWwBKtCjny12ef5tAScFYcIyTWG69WAx7I/vTyhQto2yydmotNUwOuViUsmwVex+Ldix05n1Z7naZF/5xTlWzg==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@yuku-parser/binding-linux-arm64-musl@0.5.44':
-    resolution: {integrity: sha512-3XZoiHhtrjWKgk7CJC/sGzk1TE57SDPYzOFXUg6CZrigRZ+c0Q5ItzJpyAvhzlxv5ruNRYiuGvFbaRSIDnp2BA==}
+  '@yuku-parser/binding-linux-arm64-musl@0.5.46':
+    resolution: {integrity: sha512-7VfxvUQKepU6bwG5FX6XLU3cXvw50wePuW+f8cDYOfuTEWGCrirI8NlK6afy+udofAEmjhH82GsrXupOactIfw==}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@yuku-parser/binding-linux-x64-gnu@0.5.44':
-    resolution: {integrity: sha512-7KYCySZI6cjsdeiiIwvviDfJFd4Xj5gjNBzm9akUpwxRXNwaHHuEq2yGkVdGqj3BT6dJsiNhJIhtS6k7/HJdFA==}
+  '@yuku-parser/binding-linux-x64-gnu@0.5.46':
+    resolution: {integrity: sha512-r2ytt3LNpAyBP/s9kvLtPgldkyCXJGZFpteoZK40NaRo55Cfd5KFJRxdekK3mgBnm2gnQnx9qWaOniXUolj/HQ==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@yuku-parser/binding-linux-x64-musl@0.5.44':
-    resolution: {integrity: sha512-SLU/nXwOjET2XlOiO984sAzCloiWw0+JdcWpGzXLz3JQWbdiblxWC9cIvB0fCtKdDhX1mIutKNEH+RRRJADYcQ==}
+  '@yuku-parser/binding-linux-x64-musl@0.5.46':
+    resolution: {integrity: sha512-nsE+ajANECHyR09xCVHlXtbNiexSUutzrSb1fhU3JVEfVKIMfsP1LDIWh9w43FG2GRODv3lByuSl1AwnuBj0jA==}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@yuku-parser/binding-win32-arm64@0.5.44':
-    resolution: {integrity: sha512-LGmaJtB2mVqPD7Gu/RKAu9aIVxlaKPOgKB8RPHeFFD5Tf/apCiWZix1tkBjdOAo9cVEAoR9qnVHE6zJ+OG0drQ==}
+  '@yuku-parser/binding-win32-arm64@0.5.46':
+    resolution: {integrity: sha512-/jkn8U4s649vZXxDD+UmfqSB5OM8H9wjPg545q0V0d3Lj0K4CwaUOqvStaBrmxI21NM3WU/mM6xzslFHlJ3fVA==}
     cpu: [arm64]
     os: [win32]
 
-  '@yuku-parser/binding-win32-x64@0.5.44':
-    resolution: {integrity: sha512-2i0FTklLuhBIgILvtEQ3IN3J4qaTMKlxptseWNrz4F5mimL9UpQFUniVju9OOInwP2O1vgLdZn8EBjEXGNCHmg==}
+  '@yuku-parser/binding-win32-x64@0.5.46':
+    resolution: {integrity: sha512-pZlngLHCrQT1lcQXTW/F+Vld6akOyRiaDjj8TAK9ongNRAEZawencz4X01kLOeWwJWx88Xvz7nT0iBwdY6ZkHA==}
     cpu: [x64]
     os: [win32]
 
@@ -1477,6 +1477,10 @@ packages:
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+
+  argue-cli@3.1.0:
+    resolution: {integrity: sha512-DhBpBfXL4SS2uC0N922MMajKR3CdrTG0u2or1PNYgXMsrSzViJrbtvT0nCLlLGUI0plam/ZZCs7aAauHtW9thw==}
+    engines: {node: '>=22'}
 
   array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
@@ -1636,8 +1640,8 @@ packages:
     resolution: {integrity: sha512-xRwvIOMGrfOAnM1JYtqQImuaNtDEv9v6oIYAs4LIHwTiKee8uwvIi363igssOC0O5U04i4AlENs79LQLu9tEMw==}
     engines: {node: '>=20'}
 
-  cli-truncate@6.1.0:
-    resolution: {integrity: sha512-ofWtXdvPO1WepoE9Gn4dPdZw+ADud1Yz9K+xm9FjK5vvrs/D60vrlKIQeSw1wJX4cphW2bnWi8GZSKvf9T6shw==}
+  cli-truncate@6.1.1:
+    resolution: {integrity: sha512-06p9vyLahLa4zkGcgsGxU6iEkSOiuI4fhCH6Emhe2lPAcoUv73n72DnODsnHA+5wwXGnV0n9M9/qOQJSjYhFhw==}
     engines: {node: '>=22'}
 
   cli-width@3.0.0:
@@ -1721,8 +1725,8 @@ packages:
   conventional-commit-types@3.0.0:
     resolution: {integrity: sha512-SmmCYnOniSsAa9GqWOeLqc179lfr5TRu5b4QFDkbsrJ5TZjPJx85wtOr3zn+1dbeNiXDKGPbZ72IKbPhLXh/Lg==}
 
-  conventional-commits-parser@7.0.1:
-    resolution: {integrity: sha512-6VtskFpPsNkGVk/TY2RnV/MEdKfvCPBtQZN9x8jh9+k5RWBQ+tiaWn5UFCzTr0Dd88iKx7xghxbjBRp5uIzp3g==}
+  conventional-commits-parser@7.1.0:
+    resolution: {integrity: sha512-DPp6hkUjvwIivxbkrTiLXeRswNv1A/4GFA2X6scXma0AMa9632V3TwxmrlkUIEtUktiM3Ln+RrSH2xlP3/jUTw==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -2158,8 +2162,8 @@ packages:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
     engines: {node: '>=0.10.0'}
 
-  hono@4.12.28:
-    resolution: {integrity: sha512-YwUvVpSF7m1yOblFPrU3Hbo8XhPheBoiyfGuII6z19LnOr6JpDnyyp7LFNrfV56wS8tpvtBFGRISHN02pDdLOA==}
+  hono@4.12.29:
+    resolution: {integrity: sha512-1hNiRjawYrLq/4m3DQQjPGFg0VZkk4RjQJDff/excI6Dm9BiL75qxGrd7/c6YOxPdq6AscP3LiXhQ6fKFC1Waw==}
     engines: {node: '>=16.9.0'}
 
   hookable@6.1.1:
@@ -2192,8 +2196,8 @@ packages:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
 
-  ignore@7.0.5:
-    resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
+  ignore@7.0.6:
+    resolution: {integrity: sha512-BAg6QkE8W+TuQLrrw0Ugr7HegXduRuuj8/ti2kSOc+jz1dmx8/WNcjr6XGnq5YpDWxFwwaavqD0+jIUOKelTsw==}
     engines: {node: '>= 4'}
 
   import-fresh@3.3.1:
@@ -2623,10 +2627,6 @@ packages:
     resolution: {integrity: sha512-aisnrDP4GNe06UcKFnV5bfMNPBUw4jsLGaWwWfnH3v02GnBuXX2MCVn5RbrWo0j3pczUilYblq7fQ7Nw2t5XKw==}
     engines: {node: '>= 0.8'}
 
-  meow@14.1.0:
-    resolution: {integrity: sha512-EDYo6VlmtnumlcBCbh1gLJ//9jvM/ndXHfVXIFrZVr6fGcwTUyCTFNTLCKuY3ffbK8L/+3Mzqnd58RojiZqHVw==}
-    engines: {node: '>=20'}
-
   merge-descriptors@2.0.0:
     resolution: {integrity: sha512-Snk314V5ayFLhp3fkUREub6WtjBfPdCPY1Ln8/8munuLuiYhsABgBVWsozAG+MWMbVEvcdcpbi9R7ww22l9Q3g==}
     engines: {node: '>=18'}
@@ -2817,8 +2817,8 @@ packages:
     resolution: {integrity: sha512-s+w+rBWnpTMwSFbaE0UXsRlg7hU4FjekKU4eyAih5T8nJuNZT1nNsskXpxmeqSK9UzkBl6UgRlnKc8hz8IEqOw==}
     hasBin: true
 
-  node-releases@2.0.50:
-    resolution: {integrity: sha512-J6l92tKHX6w8Jy5nO1Vuc01NoIiRGi/d6qBKVxh+IQ8Cr3b6HbVNfKiF8ZpFKufTwpwxMmce2W3iQZ861ZRyTg==}
+  node-releases@2.0.51:
+    resolution: {integrity: sha512-wRNIrw4DmVLKQlbgOMdkMx27Wrpzes2hh5Jtbi2bjPd+4wJstWIqP5A+lscnqbm0xxmT5Bpg8Lec5ItEBwx6BQ==}
     engines: {node: '>=18'}
 
   object-assign@4.1.1:
@@ -2924,8 +2924,8 @@ packages:
     deprecated: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.
     hasBin: true
 
-  prettier@3.9.4:
-    resolution: {integrity: sha512-yWG/o/4oJfo036EKAfK6ACAoDOfHeRHx4tuxkfBZiauURiaSmYwlpOr5LQqKtIkRD2z1PLteme2WoxEnj4tHTg==}
+  prettier@3.9.5:
+    resolution: {integrity: sha512-/FVl766LpUfB5vXgCYOYa0MeV/441Ia99AeICQIQFTY/Nw0roZwULcXpku5i1/m5kt/baz+s4Zogspd839HSMg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3035,8 +3035,8 @@ packages:
   rfdc@1.4.1:
     resolution: {integrity: sha512-q1b3N5QkRUWUl7iyylaaj3kOpIT0N2i9MqIEQXP73GVsN9cw3fdx8X63cEmWhJGi2PPCF23Ijp7ktmd39rawIA==}
 
-  rolldown-plugin-dts@0.27.2:
-    resolution: {integrity: sha512-BzyD3qqF4DAg12c8QTVia73dXReDcsMsYHPvKxxjCeBolDbVxtYIy+YanF6osBLn5WGp2F43McOSUhxplgEZuQ==}
+  rolldown-plugin-dts@0.27.4:
+    resolution: {integrity: sha512-z1uz1gH2sJ55i6JY/xi3q7gsI5CPthefDp5HYXnBlrkN1L3K4tx+gyAQO3Udt69ASWItWKwXJ55nKQq2HCMVfA==}
     engines: {node: ^22.18.0 || >=24.11.0}
     peerDependencies:
       '@ts-macro/tsc': ^0.3.6
@@ -3668,11 +3668,11 @@ packages:
   yuku-ast@0.1.7:
     resolution: {integrity: sha512-2RiMEWv500TixY5rJy6OZd4fSy9WYZKWh6gGbIJ7y7vAGcuCugWOWwOLGaQcRZrXcPUfqtLtvpaJ3SdXtWlhKA==}
 
-  yuku-codegen@0.5.44:
-    resolution: {integrity: sha512-0rhtgWGz+bR3Pe7xqJ5E4VqxI1vqNtkeJRkeXM0Qd3tgldYClQipxa9bRZyuNOOfk0Ri02scrjnkoAHM16/f2g==}
+  yuku-codegen@0.5.46:
+    resolution: {integrity: sha512-2qFouFH7ag332HJhqLd3/QGqGQtSIjnTU1/5Y4BTvRWMwR252rezKBtEBHq/s+rwLc7uKoLvbm2BzQzzsJghTQ==}
 
-  yuku-parser@0.5.44:
-    resolution: {integrity: sha512-mAhpQZ/bXjxZmKiGUqEWskC9mZTcTBv6/fdzVdzdjM6XuD1DP3IavdLVWdM39L9ewK9vS9OtJmaKNeWgRzpy0w==}
+  yuku-parser@0.5.46:
+    resolution: {integrity: sha512-eMNzX5eYnkqo6zNYf2H8WHcMPHfIf7ijmw0X8NYZ1ANXAU5Y9rwTB9MgfCuvLxlR7fV/96v3gWa8y/YUGFLxjw==}
 
   zod-to-json-schema@3.25.2:
     resolution: {integrity: sha512-O/PgfnpT1xKSDeQYSCfRI5Gy3hPf91mKVDuYLUHZJMiDFptvP41MSnWofm8dnCm0256ZNfZIM7DSzuSMAFnjHA==}
@@ -3921,13 +3921,13 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
-  '@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.0.1)(typescript@6.0.3)':
+  '@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.1.0)(typescript@6.0.3)':
     dependencies:
       '@commitlint/config-conventional': 21.2.0
       '@commitlint/format': 21.2.0
       '@commitlint/lint': 21.2.0
       '@commitlint/load': 21.2.0(@types/node@26.1.1)(typescript@6.0.3)
-      '@commitlint/read': 21.2.1(conventional-commits-parser@7.0.1)
+      '@commitlint/read': 21.2.1(conventional-commits-parser@7.1.0)
       '@commitlint/types': 21.2.0
       tinyexec: 1.2.4
       yargs: 18.0.0
@@ -3992,13 +3992,13 @@ snapshots:
     dependencies:
       '@commitlint/types': 21.2.0
       conventional-changelog-angular: 9.2.1
-      conventional-commits-parser: 7.0.1
+      conventional-commits-parser: 7.1.0
 
-  '@commitlint/read@21.2.1(conventional-commits-parser@7.0.1)':
+  '@commitlint/read@21.2.1(conventional-commits-parser@7.1.0)':
     dependencies:
       '@commitlint/top-level': 21.2.0
       '@commitlint/types': 21.2.0
-      '@conventional-changelog/git-client': 3.1.0(conventional-commits-parser@7.0.1)
+      '@conventional-changelog/git-client': 3.1.0(conventional-commits-parser@7.1.0)
       tinyexec: 1.2.4
     transitivePeerDependencies:
       - conventional-commits-filter
@@ -4027,16 +4027,16 @@ snapshots:
 
   '@commitlint/types@21.2.0':
     dependencies:
-      conventional-commits-parser: 7.0.1
+      conventional-commits-parser: 7.1.0
       picocolors: 1.1.1
 
-  '@conventional-changelog/git-client@3.1.0(conventional-commits-parser@7.0.1)':
+  '@conventional-changelog/git-client@3.1.0(conventional-commits-parser@7.1.0)':
     dependencies:
       '@simple-libs/child-process-utils': 2.0.0
       '@simple-libs/stream-utils': 2.0.0
       semver: 7.8.5
     optionalDependencies:
-      conventional-commits-parser: 7.0.1
+      conventional-commits-parser: 7.1.0
 
   '@conventional-changelog/template@1.2.1': {}
 
@@ -4065,7 +4065,7 @@ snapshots:
       effect: 3.21.4
       uuid: 11.1.1
 
-  '@effect/language-service@0.86.4': {}
+  '@effect/language-service@0.86.6': {}
 
   '@effect/platform-node-shared@0.60.0(@effect/cluster@0.59.0(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/sql@0.51.1(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/workflow@0.18.2(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/sql@0.51.1(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(effect@3.21.4)':
     dependencies:
@@ -4240,9 +4240,9 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@hono/node-server@1.19.14(hono@4.12.28)':
+  '@hono/node-server@1.19.14(hono@4.12.29)':
     dependencies:
-      hono: 4.12.28
+      hono: 4.12.29
 
   '@inquirer/external-editor@1.0.3(@types/node@26.1.1)':
     dependencies:
@@ -4324,7 +4324,7 @@ snapshots:
 
   '@modelcontextprotocol/sdk@1.29.0(zod@4.4.3)':
     dependencies:
-      '@hono/node-server': 1.19.14(hono@4.12.28)
+      '@hono/node-server': 1.19.14(hono@4.12.29)
       ajv: 8.20.0
       ajv-formats: 3.0.1(ajv@8.20.0)
       content-type: 1.0.5
@@ -4334,7 +4334,7 @@ snapshots:
       eventsource-parser: 3.1.0
       express: 5.2.1
       express-rate-limit: 8.5.2(express@5.2.1)
-      hono: 4.12.28
+      hono: 4.12.29
       jose: 6.2.3
       json-schema-typed: 8.0.2
       pkce-challenge: 5.0.1
@@ -4591,7 +4591,7 @@ snapshots:
       jju: 1.4.0
       semver: 7.8.5
 
-  '@savvy-web/cli@1.5.6':
+  '@savvy-web/cli@1.5.8':
     dependencies:
       '@effect/cli': 0.75.2(@effect/platform@0.96.2(effect@3.21.4))(@effect/printer-ansi@0.49.0(@effect/typeclass@0.40.0(effect@3.21.4))(effect@3.21.4))(@effect/printer@0.49.0(@effect/typeclass@0.40.0(effect@3.21.4))(effect@3.21.4))(effect@3.21.4)
       '@effect/cluster': 0.59.0(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/sql@0.51.1(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/workflow@0.18.2(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(effect@3.21.4))(effect@3.21.4)
@@ -4604,7 +4604,7 @@ snapshots:
       '@effect/sql': 0.51.1(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
       '@effect/typeclass': 0.40.0(effect@3.21.4)
       '@effect/workflow': 0.18.2(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(effect@3.21.4)
-      '@savvy-web/silk-effects': 3.2.2(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
+      '@savvy-web/silk-effects': 3.2.3(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
       effect: 3.21.4
       jsonc-effect: 0.3.1(effect@3.21.4)
       workspaces-effect: 2.0.3(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
@@ -4616,7 +4616,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@savvy-web/mcp@1.7.3':
+  '@savvy-web/mcp@1.7.4':
     dependencies:
       '@effect/cluster': 0.59.0(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/sql@0.51.1(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/workflow@0.18.2(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(effect@3.21.4))(effect@3.21.4)
       '@effect/experimental': 0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
@@ -4626,7 +4626,7 @@ snapshots:
       '@effect/sql': 0.51.1(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
       '@effect/workflow': 0.18.2(@effect/experimental@0.60.0(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(@effect/platform@0.96.2(effect@3.21.4))(@effect/rpc@0.75.1(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4))(effect@3.21.4)
       '@modelcontextprotocol/sdk': 1.29.0(zod@4.4.3)
-      '@savvy-web/silk-effects': 3.2.2(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
+      '@savvy-web/silk-effects': 3.2.3(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
       effect: 3.21.4
       workspaces-effect: 2.0.3(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
       zod: 4.4.3
@@ -4638,7 +4638,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@savvy-web/silk-effects@3.2.2(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)':
+  '@savvy-web/silk-effects@3.2.3(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)':
     dependencies:
       '@changesets/apply-release-plan': 8.0.0-next.7
       '@changesets/config': 4.0.0-next.6
@@ -4650,7 +4650,7 @@ snapshots:
       jsonc-effect: 0.3.1(effect@3.21.4)
       mdast-util-heading-range: 4.0.0
       mdast-util-to-string: 4.0.0
-      prettier: 3.9.4
+      prettier: 3.9.5
       remark-gfm: 4.0.1
       remark-parse: 11.0.0
       remark-stringify: 11.0.0
@@ -4668,16 +4668,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@savvy-web/silk@2.2.3(@changesets/cli@3.0.0-next.8)(@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.0.1)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@types/node@26.1.1)(@typescript/native-preview@7.0.0-dev.20260707.2)(commitizen@4.3.2(@types/node@26.1.1)(typescript@6.0.3))(husky@9.1.7)(lint-staged@17.0.8)(markdownlint-cli2-formatter-codequality@0.0.7(markdownlint-cli2@0.23.0))(markdownlint-cli2@0.23.0)(turbo@2.10.4)(typescript@6.0.3)':
+  '@savvy-web/silk@2.3.0(@changesets/cli@3.0.0-next.8)(@commitlint/cli@21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.1.0)(typescript@6.0.3))(@commitlint/config-conventional@21.2.0)(@types/node@26.1.1)(@typescript/native-preview@7.0.0-dev.20260707.2)(commitizen@4.3.2(@types/node@26.1.1)(typescript@6.0.3))(husky@9.1.7)(lint-staged@17.0.8)(markdownlint-cli2-formatter-codequality@0.0.7(markdownlint-cli2@0.23.0))(markdownlint-cli2@0.23.0)(turbo@2.10.4)(typescript@6.0.3)':
     dependencies:
       '@changesets/cli': 3.0.0-next.8
-      '@commitlint/cli': 21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.0.1)(typescript@6.0.3)
+      '@commitlint/cli': 21.2.1(@types/node@26.1.1)(conventional-commits-parser@7.1.0)(typescript@6.0.3)
       '@commitlint/config-conventional': 21.2.0
       '@effect/platform': 0.96.2(effect@3.21.4)
       '@savvy-web/changelog': 0.1.1
-      '@savvy-web/cli': 1.5.6
-      '@savvy-web/mcp': 1.7.3
-      '@savvy-web/silk-effects': 3.2.2(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
+      '@savvy-web/cli': 1.5.8
+      '@savvy-web/mcp': 1.7.4
+      '@savvy-web/silk-effects': 3.2.3(@effect/platform@0.96.2(effect@3.21.4))(effect@3.21.4)
       '@types/node': 26.1.1
       '@typescript/native-preview': 7.0.0-dev.20260707.2
       commitizen: 4.3.2(@types/node@26.1.1)(typescript@6.0.3)
@@ -5068,70 +5068,70 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
 
-  '@yuku-codegen/binding-darwin-arm64@0.5.44':
+  '@yuku-codegen/binding-darwin-arm64@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-darwin-x64@0.5.44':
+  '@yuku-codegen/binding-darwin-x64@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-freebsd-x64@0.5.44':
+  '@yuku-codegen/binding-freebsd-x64@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-linux-arm-gnu@0.5.44':
+  '@yuku-codegen/binding-linux-arm-gnu@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-linux-arm-musl@0.5.44':
+  '@yuku-codegen/binding-linux-arm-musl@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-linux-arm64-gnu@0.5.44':
+  '@yuku-codegen/binding-linux-arm64-gnu@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-linux-arm64-musl@0.5.44':
+  '@yuku-codegen/binding-linux-arm64-musl@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-linux-x64-gnu@0.5.44':
+  '@yuku-codegen/binding-linux-x64-gnu@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-linux-x64-musl@0.5.44':
+  '@yuku-codegen/binding-linux-x64-musl@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-win32-arm64@0.5.44':
+  '@yuku-codegen/binding-win32-arm64@0.5.46':
     optional: true
 
-  '@yuku-codegen/binding-win32-x64@0.5.44':
+  '@yuku-codegen/binding-win32-x64@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-darwin-arm64@0.5.44':
+  '@yuku-parser/binding-darwin-arm64@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-darwin-x64@0.5.44':
+  '@yuku-parser/binding-darwin-x64@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-freebsd-x64@0.5.44':
+  '@yuku-parser/binding-freebsd-x64@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-linux-arm-gnu@0.5.44':
+  '@yuku-parser/binding-linux-arm-gnu@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-linux-arm-musl@0.5.44':
+  '@yuku-parser/binding-linux-arm-musl@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-linux-arm64-gnu@0.5.44':
+  '@yuku-parser/binding-linux-arm64-gnu@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-linux-arm64-musl@0.5.44':
+  '@yuku-parser/binding-linux-arm64-musl@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-linux-x64-gnu@0.5.44':
+  '@yuku-parser/binding-linux-x64-gnu@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-linux-x64-musl@0.5.44':
+  '@yuku-parser/binding-linux-x64-musl@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-win32-arm64@0.5.44':
+  '@yuku-parser/binding-win32-arm64@0.5.46':
     optional: true
 
-  '@yuku-parser/binding-win32-x64@0.5.44':
+  '@yuku-parser/binding-win32-x64@0.5.46':
     optional: true
 
   '@yuku-toolchain/types@0.5.43': {}
@@ -5202,6 +5202,8 @@ snapshots:
       sprintf-js: 1.0.3
 
   argparse@2.0.1: {}
+
+  argue-cli@3.1.0: {}
 
   array-union@2.1.0: {}
 
@@ -5276,7 +5278,7 @@ snapshots:
       baseline-browser-mapping: 2.10.42
       caniuse-lite: 1.0.30001803
       electron-to-chromium: 1.5.389
-      node-releases: 2.0.50
+      node-releases: 2.0.51
       update-browserslist-db: 1.2.3(browserslist@4.28.5)
 
   buffer@5.7.1:
@@ -5352,7 +5354,7 @@ snapshots:
       slice-ansi: 8.0.0
       string-width: 8.2.2
 
-  cli-truncate@6.1.0:
+  cli-truncate@6.1.1:
     dependencies:
       slice-ansi: 9.0.0
       string-width: 8.2.2
@@ -5439,10 +5441,10 @@ snapshots:
 
   conventional-commit-types@3.0.0: {}
 
-  conventional-commits-parser@7.0.1:
+  conventional-commits-parser@7.1.0:
     dependencies:
       '@simple-libs/stream-utils': 2.0.0
-      meow: 14.1.0
+      argue-cli: 3.1.0
 
   convert-source-map@2.0.0: {}
 
@@ -5866,7 +5868,7 @@ snapshots:
     dependencies:
       '@sindresorhus/merge-streams': 4.0.0
       fast-glob: 3.3.3
-      ignore: 7.0.5
+      ignore: 7.0.6
       is-path-inside: 4.0.0
       slash: 5.1.0
       unicorn-magic: 0.4.0
@@ -5889,7 +5891,7 @@ snapshots:
     dependencies:
       parse-passwd: 1.0.0
 
-  hono@4.12.28: {}
+  hono@4.12.29: {}
 
   hookable@6.1.1: {}
 
@@ -5915,7 +5917,7 @@ snapshots:
 
   ignore@5.3.2: {}
 
-  ignore@7.0.5: {}
+  ignore@7.0.6: {}
 
   import-fresh@3.3.1:
     dependencies:
@@ -5954,7 +5956,7 @@ snapshots:
       chalk: 5.6.2
       cli-boxes: 4.0.1
       cli-cursor: 4.0.0
-      cli-truncate: 6.1.0
+      cli-truncate: 6.1.1
       code-excerpt: 4.0.0
       es-toolkit: 1.49.0
       indent-string: 5.0.0
@@ -6397,8 +6399,6 @@ snapshots:
 
   media-typer@1.1.0: {}
 
-  meow@14.1.0: {}
-
   merge-descriptors@2.0.0: {}
 
   merge2@1.4.1: {}
@@ -6697,7 +6697,7 @@ snapshots:
       detect-libc: 2.1.2
     optional: true
 
-  node-releases@2.0.50: {}
+  node-releases@2.0.51: {}
 
   object-assign@4.1.1: {}
 
@@ -6803,7 +6803,7 @@ snapshots:
       tar-fs: 2.1.5
       tunnel-agent: 0.6.0
 
-  prettier@3.9.4: {}
+  prettier@3.9.5: {}
 
   proxy-addr@2.0.7:
     dependencies:
@@ -6924,15 +6924,15 @@ snapshots:
 
   rfdc@1.4.1: {}
 
-  rolldown-plugin-dts@0.27.2(@typescript/native-preview@7.0.0-dev.20260707.2)(rolldown@1.1.5)(typescript@6.0.3):
+  rolldown-plugin-dts@0.27.4(@typescript/native-preview@7.0.0-dev.20260707.2)(rolldown@1.1.5)(typescript@6.0.3):
     dependencies:
       dts-resolver: 3.0.0
       get-tsconfig: 5.0.0-beta.5
       obug: 2.1.3
       rolldown: 1.1.5
       yuku-ast: 0.1.7
-      yuku-codegen: 0.5.44
-      yuku-parser: 0.5.44
+      yuku-codegen: 0.5.46
+      yuku-parser: 0.5.46
     optionalDependencies:
       '@typescript/native-preview': 7.0.0-dev.20260707.2
       typescript: 6.0.3
@@ -7237,7 +7237,7 @@ snapshots:
       obug: 2.1.3
       picomatch: 4.0.5
       rolldown: 1.1.5
-      rolldown-plugin-dts: 0.27.2(@typescript/native-preview@7.0.0-dev.20260707.2)(rolldown@1.1.5)(typescript@6.0.3)
+      rolldown-plugin-dts: 0.27.4(@typescript/native-preview@7.0.0-dev.20260707.2)(rolldown@1.1.5)(typescript@6.0.3)
       semver: 7.8.5
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
@@ -7529,37 +7529,37 @@ snapshots:
     dependencies:
       '@yuku-toolchain/types': 0.5.43
 
-  yuku-codegen@0.5.44:
+  yuku-codegen@0.5.46:
     dependencies:
       '@yuku-toolchain/types': 0.5.43
     optionalDependencies:
-      '@yuku-codegen/binding-darwin-arm64': 0.5.44
-      '@yuku-codegen/binding-darwin-x64': 0.5.44
-      '@yuku-codegen/binding-freebsd-x64': 0.5.44
-      '@yuku-codegen/binding-linux-arm-gnu': 0.5.44
-      '@yuku-codegen/binding-linux-arm-musl': 0.5.44
-      '@yuku-codegen/binding-linux-arm64-gnu': 0.5.44
-      '@yuku-codegen/binding-linux-arm64-musl': 0.5.44
-      '@yuku-codegen/binding-linux-x64-gnu': 0.5.44
-      '@yuku-codegen/binding-linux-x64-musl': 0.5.44
-      '@yuku-codegen/binding-win32-arm64': 0.5.44
-      '@yuku-codegen/binding-win32-x64': 0.5.44
+      '@yuku-codegen/binding-darwin-arm64': 0.5.46
+      '@yuku-codegen/binding-darwin-x64': 0.5.46
+      '@yuku-codegen/binding-freebsd-x64': 0.5.46
+      '@yuku-codegen/binding-linux-arm-gnu': 0.5.46
+      '@yuku-codegen/binding-linux-arm-musl': 0.5.46
+      '@yuku-codegen/binding-linux-arm64-gnu': 0.5.46
+      '@yuku-codegen/binding-linux-arm64-musl': 0.5.46
+      '@yuku-codegen/binding-linux-x64-gnu': 0.5.46
+      '@yuku-codegen/binding-linux-x64-musl': 0.5.46
+      '@yuku-codegen/binding-win32-arm64': 0.5.46
+      '@yuku-codegen/binding-win32-x64': 0.5.46
 
-  yuku-parser@0.5.44:
+  yuku-parser@0.5.46:
     dependencies:
       '@yuku-toolchain/types': 0.5.43
     optionalDependencies:
-      '@yuku-parser/binding-darwin-arm64': 0.5.44
-      '@yuku-parser/binding-darwin-x64': 0.5.44
-      '@yuku-parser/binding-freebsd-x64': 0.5.44
-      '@yuku-parser/binding-linux-arm-gnu': 0.5.44
-      '@yuku-parser/binding-linux-arm-musl': 0.5.44
-      '@yuku-parser/binding-linux-arm64-gnu': 0.5.44
-      '@yuku-parser/binding-linux-arm64-musl': 0.5.44
-      '@yuku-parser/binding-linux-x64-gnu': 0.5.44
-      '@yuku-parser/binding-linux-x64-musl': 0.5.44
-      '@yuku-parser/binding-win32-arm64': 0.5.44
-      '@yuku-parser/binding-win32-x64': 0.5.44
+      '@yuku-parser/binding-darwin-arm64': 0.5.46
+      '@yuku-parser/binding-darwin-x64': 0.5.46
+      '@yuku-parser/binding-freebsd-x64': 0.5.46
+      '@yuku-parser/binding-linux-arm-gnu': 0.5.46
+      '@yuku-parser/binding-linux-arm-musl': 0.5.46
+      '@yuku-parser/binding-linux-arm64-gnu': 0.5.46
+      '@yuku-parser/binding-linux-arm64-musl': 0.5.46
+      '@yuku-parser/binding-linux-x64-gnu': 0.5.46
+      '@yuku-parser/binding-linux-x64-musl': 0.5.46
+      '@yuku-parser/binding-win32-arm64': 0.5.46
+      '@yuku-parser/binding-win32-x64': 0.5.46
 
   zod-to-json-schema@3.25.2(zod@4.4.3):
     dependencies:
