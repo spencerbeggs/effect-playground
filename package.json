@@ -45,8 +45,8 @@
 	},
 	"devDependencies": {
 		"@effect/language-service": "catalog:silk",
-		"@savvy-web/bundler": "^1.1.9",
-		"@savvy-web/silk": "^2.3.0",
+		"@savvy-web/bundler": "^1.1.11",
+		"@savvy-web/silk": "^2.3.1",
 		"@vitest-agent/plugin": "^1.1.8",
 		"tsx": "catalog:silk"
 	},
