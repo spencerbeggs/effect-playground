@@ -47,7 +47,7 @@
 		"@effect/language-service": "catalog:silk",
 		"@effect/tsgo": "0.19.0",
 		"@savvy-web/bundler": "^1.1.11",
-		"@savvy-web/silk": "^2.3.1",
+		"@savvy-web/silk": "^2.3.2",
 		"@vitest-agent/plugin": "^1.1.8",
 		"tsx": "catalog:silk",
 		"typescript": "7.1.0-dev.20260708.3"
