@@ -1,4 +1,11 @@
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
+	"$schema": "https://raw.githubusercontent.com/Effect-TS/tsgo/refs/heads/main/schema.json",
+	"compilerOptions": {
+		"plugins": [
+			{
+				"name": "@effect/language-service"
+			}
+		]
+	},
 	"extends": "@savvy-web/bundler/tsconfig/ecma.json"
 }
