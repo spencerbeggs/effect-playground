@@ -43,8 +43,8 @@
 	},
 	"devDependencies": {
 		"@effect/tsgo": "catalog:effect",
-		"@savvy-web/bundler": "^2.0.6",
-		"@savvy-web/silk": "^3.1.0",
+		"@savvy-web/bundler": "^2.0.7",
+		"@savvy-web/silk": "^3.1.1",
 		"@vitest-agent/plugin": "^2.0.5",
 		"tsx": "catalog:silk"
 	},
