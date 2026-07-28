@@ -1,14 +1,20 @@
+import { describe, expect, it } from "@effect/vitest";
 import { Effect, Layer, Option } from "effect";
-import { describe, expect, it } from "vitest";
 import type { LogEntry } from "../../src/services/LoggerService.js";
 import { Logger } from "../../src/services/LoggerService.js";
-import { UserService, UserServiceLive } from "../../src/services/UserService.js";
+import { UserService } from "../../src/services/UserService.js";
+
+// Note: each test builds its own layer via `Effect.provide` rather than a
+// suite-level `layer(...)` block. `layer(...)` memoizes and builds ONCE per
+// describe group, which would share UserService's in-memory cache and its
+// auto-increment counter across tests — the ID assertions below expect a
+// fresh service per test.
 
 describe("UserService", () => {
-	it("creates a user with auto-incremented ID", async () => {
-		const test = Effect.gen(function* () {
-			const testLogger = yield* Logger.Test;
-			const layer = Layer.provide(UserServiceLive, testLogger.layer);
+	it.effect("creates a user with auto-incremented ID", () =>
+		Effect.gen(function* () {
+			const testLogger = yield* Logger.makeTest;
+			const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 			const result = yield* Effect.gen(function* () {
 				const users = yield* UserService;
@@ -21,15 +27,13 @@ describe("UserService", () => {
 			const logs = yield* testLogger.getMessages;
 			expect(logs).toContain("Creating user: name=Alice");
 			expect(logs).toContain("Created user: Alice (id=1)");
-		});
+		}),
+	);
 
-		await Effect.runPromise(test);
-	});
-
-	it("auto-increments IDs for multiple users", async () => {
-		const test = Effect.gen(function* () {
-			const testLogger = yield* Logger.Test;
-			const layer = Layer.provide(UserServiceLive, testLogger.layer);
+	it.effect("auto-increments IDs for multiple users", () =>
+		Effect.gen(function* () {
+			const testLogger = yield* Logger.makeTest;
+			const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 			const result = yield* Effect.gen(function* () {
 				const users = yield* UserService;
@@ -41,16 +45,14 @@ describe("UserService", () => {
 
 			expect(result.map((u) => u.id)).toEqual([1, 2, 3]);
 			expect(result.map((u) => u.name)).toEqual(["Alice", "Bob", "Charlie"]);
-		});
-
-		await Effect.runPromise(test);
-	});
+		}),
+	);
 
 	describe("getById", () => {
-		it("retrieves a user by ID", async () => {
-			const test = Effect.gen(function* () {
-				const testLogger = yield* Logger.Test;
-				const layer = Layer.provide(UserServiceLive, testLogger.layer);
+		it.effect("retrieves a user by ID", () =>
+			Effect.gen(function* () {
+				const testLogger = yield* Logger.makeTest;
+				const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 				const result = yield* Effect.gen(function* () {
 					const users = yield* UserService;
@@ -62,19 +64,19 @@ describe("UserService", () => {
 
 				const logs = yield* testLogger.getLogsByLevel("debug");
 				expect(logs.some((l: LogEntry) => l.message.includes("Looking up user: id=1"))).toBe(true);
-			});
+			}),
+		);
 
-			await Effect.runPromise(test);
-		});
+		it.effect("fails with UserNotFound for missing user", () =>
+			Effect.gen(function* () {
+				const testLogger = yield* Logger.makeTest;
+				const layer = Layer.provide(UserService.layer, testLogger.layer);
 
-		it("fails with UserNotFound for missing user", async () => {
-			const test = Effect.gen(function* () {
-				const testLogger = yield* Logger.Test;
-				const layer = Layer.provide(UserServiceLive, testLogger.layer);
-
+				// Effect.flip swaps the channels, so the typed error becomes the
+				// success value — the v4 house pattern for asserting on failures.
 				const result = yield* Effect.gen(function* () {
 					const users = yield* UserService;
-					return yield* users.getById(999).pipe(Effect.flip);
+					return yield* Effect.flip(users.getById(999));
 				}).pipe(Effect.provide(layer));
 
 				expect(result._tag).toBe("UserNotFound");
@@ -82,17 +84,15 @@ describe("UserService", () => {
 
 				const logs = yield* testLogger.getMessages;
 				expect(logs).toContain("User not found: id=999");
-			});
-
-			await Effect.runPromise(test);
-		});
+			}),
+		);
 	});
 
 	describe("findById", () => {
-		it("returns Some when user exists", async () => {
-			const test = Effect.gen(function* () {
-				const testLogger = yield* Logger.Test;
-				const layer = Layer.provide(UserServiceLive, testLogger.layer);
+		it.effect("returns Some when user exists", () =>
+			Effect.gen(function* () {
+				const testLogger = yield* Logger.makeTest;
+				const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 				const result = yield* Effect.gen(function* () {
 					const users = yield* UserService;
@@ -102,15 +102,13 @@ describe("UserService", () => {
 
 				expect(Option.isSome(result)).toBe(true);
 				expect(Option.getOrThrow(result).name).toBe("Alice");
-			});
+			}),
+		);
 
-			await Effect.runPromise(test);
-		});
-
-		it("returns None when user does not exist", async () => {
-			const test = Effect.gen(function* () {
-				const testLogger = yield* Logger.Test;
-				const layer = Layer.provide(UserServiceLive, testLogger.layer);
+		it.effect("returns None when user does not exist", () =>
+			Effect.gen(function* () {
+				const testLogger = yield* Logger.makeTest;
+				const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 				const result = yield* Effect.gen(function* () {
 					const users = yield* UserService;
@@ -118,17 +116,15 @@ describe("UserService", () => {
 				}).pipe(Effect.provide(layer));
 
 				expect(Option.isNone(result)).toBe(true);
-			});
-
-			await Effect.runPromise(test);
-		});
+			}),
+		);
 	});
 
 	describe("deleteById", () => {
-		it("returns Deleted with user when user exists", async () => {
-			const test = Effect.gen(function* () {
-				const testLogger = yield* Logger.Test;
-				const layer = Layer.provide(UserServiceLive, testLogger.layer);
+		it.effect("returns Deleted with user when user exists", () =>
+			Effect.gen(function* () {
+				const testLogger = yield* Logger.makeTest;
+				const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 				const result = yield* Effect.gen(function* () {
 					const users = yield* UserService;
@@ -143,15 +139,13 @@ describe("UserService", () => {
 
 				const logs = yield* testLogger.getMessages;
 				expect(logs).toContain("Deleted user: Alice (id=1)");
-			});
+			}),
+		);
 
-			await Effect.runPromise(test);
-		});
-
-		it("returns NotFound when user does not exist", async () => {
-			const test = Effect.gen(function* () {
-				const testLogger = yield* Logger.Test;
-				const layer = Layer.provide(UserServiceLive, testLogger.layer);
+		it.effect("returns NotFound when user does not exist", () =>
+			Effect.gen(function* () {
+				const testLogger = yield* Logger.makeTest;
+				const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 				const result = yield* Effect.gen(function* () {
 					const users = yield* UserService;
@@ -165,48 +159,42 @@ describe("UserService", () => {
 
 				const logs = yield* testLogger.getMessages;
 				expect(logs).toContain("Delete skipped - user not found: id=999");
-			});
+			}),
+		);
 
-			await Effect.runPromise(test);
-		});
-
-		it("removes user from cache", async () => {
-			const test = Effect.gen(function* () {
-				const testLogger = yield* Logger.Test;
-				const layer = Layer.provide(UserServiceLive, testLogger.layer);
+		it.effect("removes user from cache", () =>
+			Effect.gen(function* () {
+				const testLogger = yield* Logger.makeTest;
+				const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 				const result = yield* Effect.gen(function* () {
 					const users = yield* UserService;
 					yield* users.create("Alice");
 					yield* users.create("Bob");
 					yield* users.deleteById(1);
-					return yield* users.list();
+					return yield* users.list;
 				}).pipe(Effect.provide(layer));
 
 				expect(result).toHaveLength(1);
-				expect(result[0].name).toBe("Bob");
-			});
-
-			await Effect.runPromise(test);
-		});
+				expect(result[0]?.name).toBe("Bob");
+			}),
+		);
 	});
 
-	it("lists all users", async () => {
-		const test = Effect.gen(function* () {
-			const testLogger = yield* Logger.Test;
-			const layer = Layer.provide(UserServiceLive, testLogger.layer);
+	it.effect("lists all users", () =>
+		Effect.gen(function* () {
+			const testLogger = yield* Logger.makeTest;
+			const layer = Layer.provide(UserService.layer, testLogger.layer);
 
 			const result = yield* Effect.gen(function* () {
 				const users = yield* UserService;
 				yield* users.create("Alice");
 				yield* users.create("Bob");
-				return yield* users.list();
+				return yield* users.list;
 			}).pipe(Effect.provide(layer));
 
 			expect(result).toHaveLength(2);
 			expect(result.map((u) => u.name)).toEqual(["Alice", "Bob"]);
-		});
-
-		await Effect.runPromise(test);
-	});
+		}),
+	);
 });

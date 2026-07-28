@@ -18,6 +18,8 @@ import { Logger } from "./LoggerService.js";
  *   )
  * );
  * ```
+ *
+ * @public
  */
 export class UserNotFound extends Data.TaggedError("UserNotFound")<{
 	/** The ID that was not found */
@@ -37,13 +39,17 @@ export class UserNotFound extends Data.TaggedError("UserNotFound")<{
  * if (result._tag === "Deleted") { ... }
  * if (result._tag === "NotFound") { ... }
  * ```
+ *
+ * @public
  */
 export type DeleteResult =
 	| { readonly _tag: "Deleted"; readonly user: User }
 	| { readonly _tag: "NotFound"; readonly id: number };
 
 /**
- * Constructors for {@link DeleteResult}.
+ * Constructors for {@link (DeleteResult:type)}.
+ *
+ * @public
  */
 export const DeleteResult = {
 	/** User was found and deleted */
@@ -57,11 +63,132 @@ export const DeleteResult = {
 // ============================================================================
 
 /**
+ * The shape of the {@link UserService} service.
+ *
+ * @public
+ */
+export interface UserServiceShape {
+	/**
+	 * Create a new user with the given name.
+	 * @param name - The display name for the user
+	 * @returns The created user with auto-generated ID
+	 */
+	readonly create: (name: string) => Effect.Effect<User>;
+
+	/**
+	 * Retrieve a user by their ID. Fails if not found.
+	 * Use this when you **expect** the user to exist.
+	 *
+	 * @param id - The user's unique identifier
+	 * @returns The user, or a {@link UserNotFound} failure
+	 */
+	readonly getById: (id: number) => Effect.Effect<User, UserNotFound>;
+
+	/**
+	 * Find a user by their ID. Returns `Option.none` if not found.
+	 * Use this when the user **might not** exist.
+	 *
+	 * @param id - The user's unique identifier
+	 * @returns Some(user) if found, None if not
+	 */
+	readonly findById: (id: number) => Effect.Effect<Option.Option<User>>;
+
+	/**
+	 * Delete a user by their ID.
+	 * Returns information about what happened rather than failing.
+	 *
+	 * @param id - The user's unique identifier
+	 * @returns {@link (DeleteResult:type)} indicating whether user was deleted or not found
+	 */
+	readonly deleteById: (id: number) => Effect.Effect<DeleteResult>;
+
+	/**
+	 * List all users in the cache.
+	 *
+	 * A bare `Effect`, not a thunk — an `Effect` is already a lazy
+	 * description, so wrapping it in a zero-argument function would add
+	 * indirection for nothing.
+	 *
+	 * @returns Array of all users, may be empty
+	 */
+	readonly list: Effect.Effect<ReadonlyArray<User>>;
+}
+
+/**
+ * Constructor for the in-memory {@link UserService} implementation.
+ *
+ * Uses Effect's `Ref` for safe mutable state and requires {@link Logger}
+ * for observability, so the resulting effect carries `Logger` in `R`.
+ */
+const make = Effect.gen(function* () {
+	const cache = yield* Ref.make(new Map<number, User>());
+	const nextId = yield* Ref.make(1);
+	const logger = yield* Logger;
+
+	return UserService.of({
+		create: (name) =>
+			Effect.gen(function* () {
+				yield* logger.info(`Creating user: name=${name}`);
+				const id = yield* Ref.getAndUpdate(nextId, (n) => n + 1);
+				const user = new User({ id, name });
+				yield* Ref.update(cache, (map) => new Map(map).set(id, user));
+				yield* logger.info(`Created user: ${user.name} (id=${user.id})`);
+				return user;
+			}),
+
+		getById: (id) =>
+			Effect.gen(function* () {
+				yield* logger.debug(`Looking up user: id=${id}`);
+				const map = yield* Ref.get(cache);
+				const user = map.get(id);
+				if (user === undefined) {
+					yield* logger.debug(`User not found: id=${id}`);
+					return yield* new UserNotFound({ id });
+				}
+				return user;
+			}),
+
+		findById: (id) =>
+			Effect.gen(function* () {
+				yield* logger.debug(`Finding user: id=${id}`);
+				const map = yield* Ref.get(cache);
+				return Option.fromUndefinedOr(map.get(id));
+			}),
+
+		deleteById: (id) =>
+			Effect.gen(function* () {
+				yield* logger.info(`Attempting to delete user: id=${id}`);
+				const map = yield* Ref.get(cache);
+				const user = map.get(id);
+
+				if (user === undefined) {
+					yield* logger.debug(`Delete skipped - user not found: id=${id}`);
+					return DeleteResult.notFound(id);
+				}
+
+				yield* Ref.update(cache, (m) => {
+					const next = new Map(m);
+					next.delete(id);
+					return next;
+				});
+				yield* logger.info(`Deleted user: ${user.name} (id=${user.id})`);
+				return DeleteResult.deleted(user);
+			}),
+
+		list: Effect.gen(function* () {
+			yield* logger.debug("Listing all users");
+			const map = yield* Ref.get(cache);
+			return Array.from(map.values());
+		}),
+	});
+});
+
+/**
  * Service for managing users in an in-memory cache.
  *
  * Error handling philosophy:
  * - `getById` **fails** with {@link UserNotFound} - caller expected a user
- * - `deleteById` **returns** {@link DeleteResult} - caller may not care if missing
+ * - `deleteById` **returns** {@link (DeleteResult:type)} - caller may not care if missing
  * - `findById` **returns** `Option<User>` - caller expects maybe-missing
  *
  * @example
@@ -86,136 +213,20 @@ export const DeleteResult = {
  *   }
  * });
  * ```
- */
-export class UserService extends Context.Tag("UserService")<
-	UserService,
-	{
-		/**
-		 * Create a new user with the given name.
-		 * @param name - The display name for the user
-		 * @returns The created user with auto-generated ID
-		 */
-		readonly create: (name: string) => Effect.Effect<User>;
-
-		/**
-		 * Retrieve a user by their ID. Fails if not found.
-		 * Use this when you **expect** the user to exist.
-		 *
-		 * @param id - The user's unique identifier
-		 * @returns The user
-		 * @throws {@link UserNotFound} if no user exists with that ID
-		 */
-		readonly getById: (id: number) => Effect.Effect<User, UserNotFound>;
-
-		/**
-		 * Find a user by their ID. Returns Option.none if not found.
-		 * Use this when the user **might not** exist.
-		 *
-		 * @param id - The user's unique identifier
-		 * @returns Some(user) if found, None if not
-		 */
-		readonly findById: (id: number) => Effect.Effect<Option.Option<User>>;
-
-		/**
-		 * Delete a user by their ID.
-		 * Returns information about what happened rather than failing.
-		 *
-		 * @param id - The user's unique identifier
-		 * @returns {@link DeleteResult} indicating whether user was deleted or not found
-		 */
-		readonly deleteById: (id: number) => Effect.Effect<DeleteResult>;
-
-		/**
-		 * List all users in the cache.
-		 * @returns Array of all users, may be empty
-		 */
-		readonly list: () => Effect.Effect<ReadonlyArray<User>>;
-	}
->() {}
-
-// ============================================================================
-// Implementation
-// ============================================================================
-
-/**
- * In-memory implementation of {@link UserService}.
  *
- * Uses Effect's `Ref` for thread-safe mutable state.
- * Requires {@link Logger} for observability.
+ * @public
  */
-export const UserServiceLive = Layer.effect(
-	UserService,
-	Effect.gen(function* () {
-		const cache = yield* Ref.make(new Map<number, User>());
-		const nextId = yield* Ref.make(1);
-		const logger = yield* Logger;
+export class UserService extends Context.Service<UserService, UserServiceShape>()("UserService") {
+	/**
+	 * In-memory implementation. Still requires {@link Logger} — provide one
+	 * with `Layer.provide`, or use {@link UserService.layerWithLogging} /
+	 * {@link UserService.layerSilent}.
+	 */
+	static readonly layer: Layer.Layer<UserService, never, Logger> = Layer.effect(UserService, make);
 
-		return {
-			create: (name) =>
-				Effect.gen(function* () {
-					yield* logger.info(`Creating user: name=${name}`);
-					const id = yield* Ref.getAndUpdate(nextId, (n) => n + 1);
-					const user = new User({ id, name });
-					yield* Ref.update(cache, (map) => new Map(map).set(id, user));
-					yield* logger.info(`Created user: ${user.name} (id=${user.id})`);
-					return user;
-				}),
+	/** {@link UserService.layer} with console logging */
+	static readonly layerWithLogging: Layer.Layer<UserService> = Layer.provide(UserService.layer, Logger.layer);
 
-			getById: (id) =>
-				Effect.gen(function* () {
-					yield* logger.debug(`Looking up user: id=${id}`);
-					const map = yield* Ref.get(cache);
-					const user = map.get(id);
-					if (user === undefined) {
-						yield* logger.debug(`User not found: id=${id}`);
-						return yield* new UserNotFound({ id });
-					}
-					return user;
-				}),
-
-			findById: (id) =>
-				Effect.gen(function* () {
-					yield* logger.debug(`Finding user: id=${id}`);
-					const map = yield* Ref.get(cache);
-					return Option.fromNullable(map.get(id));
-				}),
-
-			deleteById: (id) =>
-				Effect.gen(function* () {
-					yield* logger.info(`Attempting to delete user: id=${id}`);
-					const map = yield* Ref.get(cache);
-					const user = map.get(id);
-
-					if (user === undefined) {
-						yield* logger.debug(`Delete skipped - user not found: id=${id}`);
-						return DeleteResult.notFound(id);
-					}
-
-					yield* Ref.update(cache, (m) => {
-						const next = new Map(m);
-						next.delete(id);
-						return next;
-					});
-					yield* logger.info(`Deleted user: ${user.name} (id=${user.id})`);
-					return DeleteResult.deleted(user);
-				}),
-
-			list: () =>
-				Effect.gen(function* () {
-					yield* logger.debug("Listing all users");
-					const map = yield* Ref.get(cache);
-					return Array.from(map.values());
-				}),
-		};
-	}),
-);
-
-// ============================================================================
-// Pre-composed layers
-// ============================================================================
-
-/** {@link UserServiceLive} with console logging */
-export const UserServiceWithLogging = Layer.provide(UserServiceLive, Logger.Live);
-
-/** {@link UserServiceLive} with silent logging (for tests) */
-export const UserServiceSilent = Layer.provide(UserServiceLive, Logger.Silent);
+	/** {@link UserService.layer} with silent logging (for tests) */
+	static readonly layerSilent: Layer.Layer<UserService> = Layer.provide(UserService.layer, Logger.layerSilent);
+}

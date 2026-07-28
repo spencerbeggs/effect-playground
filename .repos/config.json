@@ -1,0 +1,17 @@
+{
+	"repos": {
+		"effect": {
+			"url": "https://github.com/Effect-TS/effect.git",
+			"ref": "effect@4.0.0-beta.101",
+			"purpose": "Authoritative Effect v4 source, pinned to the exact beta this repo runs — read it instead of guessing v4 APIs from v3 recall.",
+			"sparse": [
+				"packages/effect/src",
+				"packages/platform-node/src",
+				"packages/vitest/src",
+				"MIGRATION.md",
+				"migration",
+				"cookbooks"
+			]
+		}
+	}
+}

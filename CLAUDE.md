@@ -70,10 +70,17 @@ Press `F5` in VS Code to debug. Two configurations available:
 
 | Package | Purpose |
 | ------- | ------- |
-| `effect` | Core Effect library |
-| `@effect/platform` | Cross-platform abstractions (HTTP, FileSystem, etc.) |
+| `effect` | Core Effect library (v4 — platform, HTTP, CLI, SQL etc. now live in core, under `effect/unstable/*` where still unstable) |
 | `@effect/platform-node` | Node.js implementations of platform services |
-| `@effect/language-service` | IDE support (completions, refactors) |
+| `@effect/vitest` | Effect-aware test runner (`it.effect`); re-exports Vitest |
+| `@effect/tsgo` | Fast type-checker + Effect language-service diagnostics |
+
+Versions come from the `effect` catalog supplied by the
+`@effected/pnpm-plugin-effect` config dependency in `pnpm-workspace.yaml` — to
+move Effect versions, bump that plugin rather than pinning packages here.
+
+> `@effect/platform` is **not** a dependency on the v4 line; its contracts moved
+> into `effect` itself.
 
 ## Conventions
 
@@ -87,31 +94,55 @@ Press `F5` in VS Code to debug. Two configurations available:
 
 - Prefer `Effect.gen` with generators for readability
 - Use `yield*` to unwrap effects (like `await` for promises)
-- Define services with `Context.Tag` and implement with `Layer`
+- Define services with `Context.Service` and implement with `Layer`
 - Use `Schema` for runtime validation and type inference
 - Use `TaggedError` for typed, recoverable errors
 
+This repo is on **Effect v4** (`4.0.0-beta.101`). Do not write v3 APIs from
+memory — several renames are not guessable, and a wrong guess often type-checks.
+The ones that bite here:
+
+| v3 | v4 |
+| --- | --- |
+| `Context.Tag(id)<Self, Shape>()` | `Context.Service<Self, Shape>()(id)` — types first, id second |
+| `Option.fromNullable` | `Option.fromUndefinedOr` / `fromNullishOr` |
+| `Effect.Effect.Success<T>` | `Effect.Success<T>` |
+| `Logger.withMinimumLogLevel(l)` | `Effect.provideService(References.MinimumLogLevel, l)` |
+| `LogLevel.Debug` (object, has `.label`) | `"Debug"` — `LogLevel` is a plain string union; `"Warning"` is now `"Warn"` |
+| `Layer.scoped` | `Layer.effect` |
+| `Service["Type"]` | `Service["Service"]` |
+
+Verify anything not listed against `node_modules/effect/dist/*.d.ts` rather than
+recall.
+
 ### Naming Patterns
 
-Services follow this naming convention:
+Services follow the **v4 layer-naming convention** — `layer` for the primary
+layer, descriptive suffixes for variants. (v3's `Live`/`Default` names are
+retired.)
 
 | Entity | Pattern | Example |
 | ------ | ------- | ------- |
-| Service interface | `ServiceName` | `UserService`, `Logger` |
-| Live implementation | `ServiceNameLive` | `UserServiceLive` |
-| Pre-composed layers | `ServiceNameWith*` | `UserServiceWithLogging` |
-| Silent/test variant | `ServiceNameSilent` | `UserServiceSilent` |
-| Static implementations | `ServiceName.Live`, `.Silent`, `.Test` | `Logger.Live` |
+| Service key/class | `ServiceName` | `UserService`, `Logger` |
+| Primary layer | `ServiceName.layer` | `UserService.layer` |
+| Pre-composed layers | `ServiceName.layerWith*` | `UserService.layerWithLogging` |
+| Silent variant | `ServiceName.layerSilent` | `UserService.layerSilent` |
+| Test-double builder | `ServiceName.makeTest` | `Logger.makeTest` |
+| Service shape interface | `ServiceNameShape` | `UserServiceShape` |
 
-For simple services like Logger, attach implementations as static properties:
+Layers are attached to the service class as statics rather than exported as
+loose `const`s, so a barrel re-export can't collide on the name `layer`:
 
 ```typescript
-class Logger extends Context.Tag("Logger")<Logger, {...}>() {
-  static Live = Layer.succeed(Logger, {...});
-  static Silent = Layer.succeed(Logger, {...});
-  static Test = Effect.gen(function* () { ... }); // returns { layer, getLogs, ... }
+class Logger extends Context.Service<Logger, LoggerShape>()("Logger") {
+  static readonly layer = Layer.succeed(Logger, {...});
+  static readonly layerSilent = Layer.succeed(Logger, {...});
+  static readonly makeTest = Effect.gen(function* () { ... }); // { layer, getLogs, ... }
 }
 ```
+
+A zero-argument member is a bare `Effect`, not a thunk — `Effect` is already a
+lazy description, so `users.list` rather than `users.list()`.
 
 ### Error Handling Patterns
 
@@ -129,26 +160,31 @@ Example: `getById` fails (expects user), `findById` returns Option (might not ex
 
 ## Testing
 
-- **Framework**: Vitest with v8 coverage
+- **Framework**: `@effect/vitest` (re-exports Vitest) with v8 coverage
 - **Location**: `__test__/` directory mirrors `src/` structure
 - **Run single test**: `pnpm vitest run __test__/path/to/file.test.ts`
+- Effect-returning tests use `it.effect` — never
+  `it("...", () => Effect.runPromise(...))`
+- Assert on typed failures with `Effect.flip`, which swaps the channels so the
+  error becomes the success value
 
-### Test Pattern with Logger.Test
+### Test Pattern with Logger.makeTest
 
-Use `Logger.Test` to capture logs for assertions:
+Use `Logger.makeTest` to capture logs for assertions:
 
 ```typescript
+import { describe, expect, it } from "@effect/vitest";
 import { Effect, Layer } from "effect";
 import { Logger } from "../../src/services/LoggerService.js";
-import { UserService, UserServiceLive } from "../../src/services/UserService.js";
+import { UserService } from "../../src/services/UserService.js";
 
-it("creates a user", async () => {
-  const test = Effect.gen(function* () {
+it.effect("creates a user", () =>
+  Effect.gen(function* () {
     // 1. Create capturing logger
-    const testLogger = yield* Logger.Test;
+    const testLogger = yield* Logger.makeTest;
 
     // 2. Compose layer with test logger
-    const layer = Layer.provide(UserServiceLive, testLogger.layer);
+    const layer = Layer.provide(UserService.layer, testLogger.layer);
 
     // 3. Run effect with layer
     const result = yield* Effect.gen(function* () {
@@ -162,15 +198,17 @@ it("creates a user", async () => {
     // 5. Assert on captured logs
     const logs = yield* testLogger.getMessages;
     expect(logs).toContain("Created user: Alice (id=1)");
-  });
-
-  await Effect.runPromise(test);
-});
+  }));
 ```
 
 Key points:
 
-- `Logger.Test` creates a fresh capturing logger per test
-- Use `Layer.provide(ServiceLive, testLogger.layer)` to compose
+- `Logger.makeTest` creates a fresh capturing logger per evaluation
+- Use `Layer.provide(UserService.layer, testLogger.layer)` to compose
 - `testLogger.getMessages` returns an Effect with captured log strings
 - `testLogger.getLogsByLevel("debug")` filters by level
+
+**Provide layers per test, not with a suite-level `layer(...)` block.**
+`layer(...)` memoizes and builds once per `describe` group, which would share
+`UserService`'s in-memory cache and auto-increment counter across tests — the
+ID assertions depend on a fresh service each time.
