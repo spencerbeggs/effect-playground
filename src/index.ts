@@ -7,13 +7,13 @@
  * - {@link User} - User entity schema
  *
  * **Services** (interfaces)
- * - {@link Logger} - Logging service with Live, Silent, and Test implementations
+ * - {@link Logger} - Logging service with `layer`, `layerSilent`, and `makeTest`
  * - {@link UserService} - User management service
  *
- * **Layers** (implementations)
- * - {@link UserServiceLive} - Requires Logger dependency
- * - {@link UserServiceWithLogging} - Pre-composed with Logger.Live
- * - {@link UserServiceSilent} - Pre-composed with Logger.Silent
+ * **Layers** (attached to the service classes, per the v4 convention)
+ * - `UserService.layer` - Requires Logger dependency
+ * - `UserService.layerWithLogging` - Pre-composed with `Logger.layer`
+ * - `UserService.layerSilent` - Pre-composed with `Logger.layerSilent`
  *
  * **Programs**
  * - {@link program} - Demo program showcasing the patterns
@@ -28,7 +28,7 @@
  *   return yield* users.create("Alice");
  * });
  *
- * myProgram.pipe(Effect.provide(UserServiceWithLogging));
+ * myProgram.pipe(Effect.provide(UserService.layerWithLogging));
  * ```
  *
  * @packageDocumentation
@@ -41,14 +41,7 @@ export { program } from "./apps/demo.js";
 export { User } from "./schemas/UserSchema.js";
 
 // Services + Layers
-export type { LogEntry, LoggerTestInstance } from "./services/LoggerService.js";
+export type { LogEntry, LoggerShape, LoggerTestInstance } from "./services/LoggerService.js";
 export { Logger } from "./services/LoggerService.js";
-export type { DeleteResult } from "./services/UserService.js";
-export {
-	DeleteResult as DeleteResultConstructors,
-	UserNotFound,
-	UserService,
-	UserServiceLive,
-	UserServiceSilent,
-	UserServiceWithLogging,
-} from "./services/UserService.js";
+export type { DeleteResult, UserServiceShape } from "./services/UserService.js";
+export { DeleteResult as DeleteResultConstructors, UserNotFound, UserService } from "./services/UserService.js";

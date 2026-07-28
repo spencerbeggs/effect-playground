@@ -10,34 +10,37 @@
  * pnpm start error    # show errors only
  * pnpm start none     # silent (no logs)
  * ```
- *
- * @module
  */
 import { NodeRuntime } from "@effect/platform-node";
-import { Console, Effect, LogLevel, Logger } from "effect";
+import type { LogLevel } from "effect";
+import { Console, Effect, References } from "effect";
 
-import { UserServiceWithLogging, program } from "./index.js";
+import { UserService, program } from "./index.js";
 
 /**
- * Parse CLI argument to Effect LogLevel.
+ * Parse a CLI argument into an Effect {@link LogLevel.LogLevel}.
+ *
+ * In v4 a log level is a plain string union — there are no `LogLevel.Debug`
+ * constants and no `.label` property to read back off one.
  */
 const parseLogLevel = (arg: string | undefined): LogLevel.LogLevel => {
 	switch (arg?.toLowerCase()) {
-		case "debug":
 		case "all":
-			return LogLevel.Debug;
+			return "All";
+		case "debug":
+			return "Debug";
 		case "info":
-			return LogLevel.Info;
+			return "Info";
 		case "warning":
 		case "warn":
-			return LogLevel.Warning;
+			return "Warn";
 		case "error":
-			return LogLevel.Error;
+			return "Error";
 		case "none":
 		case "silent":
-			return LogLevel.None;
+			return "None";
 		default:
-			return LogLevel.Info; // sensible default
+			return "Info"; // sensible default
 	}
 };
 
@@ -45,8 +48,14 @@ const parseLogLevel = (arg: string | undefined): LogLevel.LogLevel => {
 const levelArg = process.argv[2];
 const logLevel = parseLogLevel(levelArg);
 
-// Build and run
-const runnable = program.pipe(Effect.provide(UserServiceWithLogging), Logger.withMinimumLogLevel(logLevel));
+// Build and run.
+//
+// The minimum log level is a `Context.Reference` in v4, so it is supplied the
+// same way any other service is — `Logger.withMinimumLogLevel` is gone.
+const runnable = program.pipe(
+	Effect.provide(UserService.layerWithLogging),
+	Effect.provideService(References.MinimumLogLevel, logLevel),
+);
 
-Console.log(`Log level: ${logLevel.label.toUpperCase()}\n`).pipe(Effect.runSync);
+Console.log(`Log level: ${logLevel.toUpperCase()}\n`).pipe(Effect.runSync);
 NodeRuntime.runMain(runnable);

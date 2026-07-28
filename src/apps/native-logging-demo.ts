@@ -1,7 +1,8 @@
 /**
  * Demo: Effect's Native Logging System
  *
- * Shows how to use Effect.log* directly and control output with Logger layers.
+ * Shows how to use Effect.log* directly and control output with the
+ * `References.MinimumLogLevel` reference.
  *
  * Run with:
  *   pnpm tsx src/apps/native-logging-demo.ts [mode]
@@ -13,8 +14,9 @@
  *   silent  - No log output
  */
 import { NodeRuntime } from "@effect/platform-node";
-import { Console, Effect, LogLevel, Logger } from "effect";
-import { UserServiceNative, UserServiceNativeLive } from "../services/UserServiceNative.js";
+import type { LogLevel } from "effect";
+import { Console, Effect, References } from "effect";
+import { UserServiceNative } from "../services/UserServiceNative.js";
 
 const program = Effect.gen(function* () {
 	const users = yield* UserServiceNative;
@@ -42,20 +44,16 @@ const program = Effect.gen(function* () {
 
 const mode = process.argv[2] ?? "info";
 
-// Build the program with the appropriate log level layer
+const minimumLogLevel: LogLevel.LogLevel =
+	mode === "all" ? "Debug" : mode === "warn" ? "Warn" : mode === "silent" ? "None" : "Info";
+
+// Build the program with the appropriate log level.
+// `MinimumLogLevel` is a Context.Reference in v4, so it is provided as a
+// service rather than applied as a `Logger.withMinimumLogLevel` wrapper.
 const runnable = program.pipe(
-	Effect.provide(UserServiceNativeLive),
-	// Apply log level configuration AFTER providing the service
-	Logger.withMinimumLogLevel(
-		mode === "all"
-			? LogLevel.Debug
-			: mode === "warn"
-				? LogLevel.Warning
-				: mode === "silent"
-					? LogLevel.None
-					: LogLevel.Info,
-	),
+	Effect.provide(UserServiceNative.layer),
+	Effect.provideService(References.MinimumLogLevel, minimumLogLevel),
 );
 
-Console.log(`Running with log level: ${mode.toUpperCase()}\n`).pipe(Effect.runSync);
+Console.log(`Running with log level: ${minimumLogLevel.toUpperCase()}\n`).pipe(Effect.runSync);
 NodeRuntime.runMain(runnable);

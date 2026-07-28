@@ -8,6 +8,8 @@ import { UserService } from "../services/UserService.js";
  * 1. **Fail** (`getById`) - when you expect it to exist
  * 2. **Option** (`findById`) - when it might not exist
  * 3. **Result** (`deleteById`) - when you want info about what happened
+ *
+ * @public
  */
 export const program = Effect.gen(function* () {
 	const users = yield* UserService;
@@ -71,7 +73,7 @@ export const program = Effect.gen(function* () {
 	// LIST - show remaining users
 	// =========================================================================
 	yield* Console.log("\n--- Final state ---");
-	const remaining = yield* users.list();
+	const remaining = yield* users.list;
 	yield* Console.log(`Remaining users: ${remaining.map((u) => u.name).join(", ") || "(none)"}`);
 
 	return "Done!";
