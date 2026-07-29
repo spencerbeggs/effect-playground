@@ -188,7 +188,7 @@ const make = Effect.gen(function* () {
  *
  * Error handling philosophy:
  * - `getById` **fails** with {@link UserNotFound} - caller expected a user
- * - `deleteById` **returns** {@link (DeleteResult:type)} - caller may not care if missing
+ * - `deleteById` **returns** {@link DeleteResult} - caller may not care if missing
  * - `findById` **returns** `Option<User>` - caller expects maybe-missing
  *
  * @example

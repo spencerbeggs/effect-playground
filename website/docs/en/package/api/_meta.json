@@ -1,0 +1,10 @@
+[
+	{
+		"type": "dir",
+		"name": "class",
+		"label": "Classes",
+		"collapsible": true,
+		"collapsed": true,
+		"overviewHeaders": [2]
+	}
+]

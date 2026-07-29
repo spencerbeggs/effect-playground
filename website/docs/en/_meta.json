@@ -1,0 +1,10 @@
+[
+	{
+		"type": "section-header",
+		"label": "Documentation"
+	},
+	{
+		"type": "dir",
+		"name": "package"
+	}
+]

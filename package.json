@@ -15,39 +15,35 @@
 		"url": "https://spencerbeg.gs"
 	},
 	"type": "module",
-	"exports": {
-		".": "./src/index.ts"
-	},
 	"scripts": {
 		"build": "turbo run build:dev build:prod --log-order=grouped --log-prefix=none",
 		"build:dev": "node savvy.build.ts --target dev",
 		"build:prod": "node savvy.build.ts --target prod",
 		"ci:build": "CI=\"true\" turbo run build:dev build:prod --log-order=grouped --output-logs=full --log-prefix=none",
 		"ci:test": "CI=\"true\" vitest run --passWithNoTests",
+		"claude": "claude --plugin-dir plugin",
+		"dev": "turbo run dev --filter=docs",
 		"lint": "biome check --max-diagnostics=none",
 		"lint:fix": "biome check --write --max-diagnostics=none",
 		"lint:fix:unsafe": "biome check --write --unsafe --max-diagnostics=none",
 		"lint:md": "markdownlint-cli2 --config './lib/configs/.markdownlint-cli2.jsonc'",
 		"lint:md:fix": "markdownlint-cli2 --config './lib/configs/.markdownlint-cli2.jsonc' --fix",
+		"patch": "effect-tsgo patch",
+		"postinstall": "effect-tsgo patch",
 		"prepare": "husky && effect-tsgo patch",
-		"start": "tsx src/run.ts",
+		"preview": "turbo run preview --filter=docs",
 		"test": "vitest run --passWithNoTests",
 		"test:coverage": "vitest run --coverage",
 		"test:watch": "vitest --watch",
 		"typecheck": "turbo run types:check --log-prefix=none --log-order=grouped",
 		"types:check": "tsc --noEmit"
 	},
-	"dependencies": {
-		"@effect/platform-node": "catalog:effect",
-		"effect": "catalog:effect"
-	},
 	"devDependencies": {
-		"@effect/tsgo": "catalog:effect",
-		"@effect/vitest": "catalog:effect",
-		"@savvy-web/bundler": "^2.1.0",
+		"@effect/tsgo": "0.24.3",
 		"@savvy-web/silk": "^3.2.11",
 		"@vitest-agent/plugin": "^2.0.10",
-		"tsx": "catalog:silk"
+		"tsx": "catalog:silk",
+		"typescript": "7.1.0-dev.20260722.1"
 	},
 	"packageManager": "pnpm@11.17.0+sha512.cca3cea332ad254bb84145f966d19f4879615210346fc92c79a047f23a0d7b3cca3c3792f0076ba1f1831d277efbcf0a9119b31a9a60eca7fb3d6231f331ef72",
 	"engines": {
@@ -66,10 +62,5 @@
 				"onFail": "ignore"
 			}
 		]
-	},
-	"publishConfig": {
-		"access": "public",
-		"directory": "dist/dev/pkg",
-		"linkDirectory": true
 	}
 }

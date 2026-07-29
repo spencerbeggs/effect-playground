@@ -1,0 +1,38 @@
+{
+	"name": "@effected/package",
+	"version": "0.0.0",
+	"private": false,
+	"description": "Scratchpad for building, versioning and publishing Effected packages.",
+	"keywords": ["effect", "effected"],
+	"homepage": "https://github.com/spencerbeggs/effected/tree/main/packages/package#readme",
+	"bugs": {
+		"url": "https://github.com/spencerbeggs/effected/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/spencerbeggs/effected.git",
+		"directory": "packages/package"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "C. Spencer Beggs",
+		"email": "spencer@beggs.codes",
+		"url": "https://spencerbeg.gs"
+	},
+	"sideEffects": false,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"import": "./index.js",
+			"default": "./index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"peerDependencies": {
+		"effect": "4.0.0-beta.101"
+	},
+	"engines": {
+		"node": ">=24.11.0"
+	}
+}
