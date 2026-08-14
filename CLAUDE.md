@@ -98,7 +98,7 @@ move Effect versions, bump that plugin rather than pinning packages here.
 - Use `Schema` for runtime validation and type inference
 - Use `TaggedError` for typed, recoverable errors
 
-This repo is on **Effect v4** (`4.0.0-beta.101`). Do not write v3 APIs from
+This repo is on **Effect v4** (`4.0.0-beta.107`). Do not write v3 APIs from
 memory — several renames are not guessable, and a wrong guess often type-checks.
 The ones that bite here:
 
@@ -111,6 +111,9 @@ The ones that bite here:
 | `LogLevel.Debug` (object, has `.label`) | `"Debug"` — `LogLevel` is a plain string union; `"Warning"` is now `"Warn"` |
 | `Layer.scoped` | `Layer.effect` |
 | `Service["Type"]` | `Service["Service"]` |
+| `Schema.ErrorClass` / `Schema.TaggedErrorClass` | `Schema.Error` / `Schema.TaggedError` |
+
+The last row is a `beta.101` → `beta.107` rename rather than a v3 → v4 one.
 
 Verify anything not listed against `node_modules/effect/dist/*.d.ts` rather than
 recall.

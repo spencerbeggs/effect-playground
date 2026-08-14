@@ -13,8 +13,9 @@ export class Concept extends Schema.Class<Concept>("Concept")(
 		description: Schema.String,
 	}),
 ) {
-	fromString: Schema.Method<[string], Concept> = Schema.method((s) => {
-		const [name, description] = s.split(":").map((part) => part.trim());
+	/** Parses a `"name: description"` string into a {@link Concept}. */
+	static fromString(s: string): Concept {
+		const [name = "", description = ""] = s.split(":").map((part) => part.trim());
 		return new Concept({ name, description });
-	});
+	}
 }

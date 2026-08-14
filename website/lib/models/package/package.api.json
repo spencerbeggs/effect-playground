@@ -265,7 +265,58 @@
 					"isAbstract": false,
 					"name": "Concept",
 					"preserveMemberOrder": false,
-					"members": [],
+					"members": [
+						{
+							"kind": "Method",
+							"canonicalReference": "@effected/package!Concept.fromString:member(1)",
+							"docComment": "/**\n * Parses a `\"name: description\"` string into a {@link Concept}.\n */\n",
+							"excerptTokens": [
+								{
+									"kind": "Content",
+									"text": "static fromString(s: "
+								},
+								{
+									"kind": "Content",
+									"text": "string"
+								},
+								{
+									"kind": "Content",
+									"text": "): "
+								},
+								{
+									"kind": "Reference",
+									"text": "Concept",
+									"canonicalReference": "@effected/package!Concept:class"
+								},
+								{
+									"kind": "Content",
+									"text": ";"
+								}
+							],
+							"fileUrlPath": "src/Concept.ts",
+							"isStatic": true,
+							"returnTypeTokenRange": {
+								"startIndex": 3,
+								"endIndex": 4
+							},
+							"releaseTag": "Public",
+							"isProtected": false,
+							"overloadIndex": 1,
+							"parameters": [
+								{
+									"parameterName": "s",
+									"parameterTypeTokenRange": {
+										"startIndex": 1,
+										"endIndex": 2
+									},
+									"isOptional": false
+								}
+							],
+							"isOptional": false,
+							"isAbstract": false,
+							"name": "fromString"
+						}
+					],
 					"extendsTokenRange": {
 						"startIndex": 1,
 						"endIndex": 2
