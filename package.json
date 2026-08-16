@@ -41,7 +41,7 @@
 	"devDependencies": {
 		"@effect/tsgo": "0.24.3",
 		"@savvy-web/silk": "^3.7.6",
-		"@vitest-agent/plugin": "^2.2.2",
+		"@vitest-agent/plugin": "^2.2.3",
 		"tsx": "catalog:silk",
 		"typescript": "7.1.0-dev.20260722.1"
 	},
