@@ -11,13 +11,13 @@
 	},
 	"devDependencies": {
 		"@rspress/core": "catalog:silk",
-		"@rspress/plugin-sitemap": "^2.0.17",
+		"@rspress/plugin-sitemap": "^2.0.21",
 		"@types/node": "catalog:silk",
 		"@types/react": "catalog:silk",
 		"@types/react-dom": "catalog:silk",
 		"react": "catalog:silk",
 		"react-dom": "catalog:silk",
-		"rspress-plugin-api-extractor": "^0.8.4",
+		"rspress-plugin-api-extractor": "^0.13.3",
 		"rspress-plugin-mermaid": "^1.0.1"
 	}
 }
