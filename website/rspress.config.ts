@@ -43,11 +43,11 @@ export default defineConfig({
 	globalStyles: join(import.meta.dirname, "theme/vitest-agent-theme.css"),
 	logo: { light: "/images/logo-horizontal.svg", dark: "/images/logo-horizontal-dark.svg" },
 	icon: "/images/favicon-32x32.png",
+	siteOrigin: "https://effected.dev",
 	plugins: [
 		ApiExtractorPlugin({
-			siteUrl: "https://effected.spencerbeg.gs",
 			ogImage: {
-				url: "https://effected.spencerbeg.gs/og-image.png",
+				url: "https://effected.dev/og-image.png",
 			},
 			apis: ApiExtractorPlugin.apis.fromDir("./lib/models"),
 			observability: {
@@ -55,7 +55,7 @@ export default defineConfig({
 			},
 		}),
 		pluginSitemap({
-			siteUrl: "https://effected.spencerbeg.gs",
+			siteUrl: "https://effected.dev",
 		}),
 		mermaid(),
 	],

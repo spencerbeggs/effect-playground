@@ -1,7 +1,7 @@
 {
 	"metadata": {
 		"toolPackage": "@microsoft/api-extractor",
-		"toolVersion": "7.58.12",
+		"toolVersion": "7.59.0",
 		"schemaVersion": 1011,
 		"oldestForwardsCompatibleVersion": 1001,
 		"tsdocConfig": {
@@ -179,7 +179,7 @@
 			"members": [
 				{
 					"kind": "Variable",
-					"canonicalReference": "@effected/package!~Concept_base:var",
+					"canonicalReference": "@effected/package!Concept_base:var",
 					"docComment": "",
 					"excerptTokens": [
 						{
@@ -248,12 +248,12 @@
 					"excerptTokens": [
 						{
 							"kind": "Content",
-							"text": "declare class Concept extends "
+							"text": "export declare class Concept extends "
 						},
 						{
 							"kind": "Reference",
 							"text": "Concept_base",
-							"canonicalReference": "@effected/package!~Concept_base"
+							"canonicalReference": "@effected/package!Concept_base"
 						},
 						{
 							"kind": "Content",
