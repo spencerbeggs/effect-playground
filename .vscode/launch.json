@@ -1,32 +1,32 @@
 {
 	"$schema": "vscode://schemas/launch",
-	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Debug Current File",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
 			"args": ["--inspect", "${file}"],
-			"cwd": "${workspaceFolder}",
 			"console": "integratedTerminal",
+			"cwd": "${workspaceFolder}",
 			"internalConsoleOptions": "neverOpen",
+			"name": "Debug Current File",
+			"request": "launch",
+			"resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
 			"skipFiles": ["<node_internals>/**", "node_modules/**"],
 			"sourceMaps": true,
-			"resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
+			"type": "node"
 		},
 		{
-			"name": "Debug index.ts",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
 			"args": ["--inspect", "src/index.ts"],
-			"cwd": "${workspaceFolder}",
 			"console": "integratedTerminal",
+			"cwd": "${workspaceFolder}",
 			"internalConsoleOptions": "neverOpen",
+			"name": "Debug index.ts",
+			"request": "launch",
+			"resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/tsx",
 			"skipFiles": ["<node_internals>/**", "node_modules/**"],
 			"sourceMaps": true,
-			"resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
+			"type": "node"
 		}
-	]
+	],
+	"version": "0.2.0"
 }
