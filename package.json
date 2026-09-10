@@ -40,7 +40,7 @@
 	},
 	"devDependencies": {
 		"@effect/tsgo": "catalog:effect",
-		"@savvy-web/silk": "^3.15.0",
+		"@savvy-web/silk": "^3.15.2",
 		"@typescript/native-preview": "catalog:silk",
 		"@vitest-agent/plugin": "^3.0.1",
 		"tsx": "catalog:silk"
