@@ -41,19 +41,19 @@
 	"devDependencies": {
 		"@effect/tsgo": "catalog:effect",
 		"@okfit/plugin": "^0.3.3",
-		"@savvy-web/silk": "^4.0.6",
+		"@savvy-web/silk": "^4.2.2",
 		"@typescript/native-preview": "catalog:silk",
-		"@vitest-agent/plugin": "^4.0.4",
+		"@vitest-agent/plugin": "^4.1.0",
 		"tsx": "catalog:silk"
 	},
-	"packageManager": "pnpm@11.27.0+sha512.ad12821463bb143295f1fa3ecde77a6b9b97a7990386da800ff57bffc3964dc64b7b1c7559d5dbe5c337aea659ed9c8937d4370bd198ca2009bc6fa0249808e7",
+	"packageManager": "pnpm@12.5.0+sha512.9cdbaa34ffacae1768635ac0d23e94db6201c7d59bf3da236b23d67c8f6b794d1dab323bcd5bcc51b55c8cafbf6f19a24e4aa61d6ab7772aa3b5cc85e325dc4d",
 	"engines": {
 		"node": ">=24.11.0"
 	},
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "11.27.0+sha512.ad12821463bb143295f1fa3ecde77a6b9b97a7990386da800ff57bffc3964dc64b7b1c7559d5dbe5c337aea659ed9c8937d4370bd198ca2009bc6fa0249808e7",
+			"version": "12.5.0+sha512.9cdbaa34ffacae1768635ac0d23e94db6201c7d59bf3da236b23d67c8f6b794d1dab323bcd5bcc51b55c8cafbf6f19a24e4aa61d6ab7772aa3b5cc85e325dc4d",
 			"onFail": "ignore"
 		},
 		"runtime": [
