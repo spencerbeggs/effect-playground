@@ -55,6 +55,7 @@ jobs:
             @effected/*
             @savvy-web/*
             @vitest-agent/*
+            @okfit/*
             rspress-plugin-api-extractor
           run: |
             pnpm savvy init
