@@ -41,9 +41,9 @@
 	"devDependencies": {
 		"@effect/tsgo": "catalog:effect",
 		"@okfit/plugin": "^0.5.2",
-		"@savvy-web/silk": "^4.2.7",
+		"@savvy-web/silk": "^4.2.8",
 		"@typescript/native-preview": "catalog:silk",
-		"@vitest-agent/plugin": "^4.1.6",
+		"@vitest-agent/plugin": "^4.1.7",
 		"tsx": "catalog:silk"
 	},
 	"engines": {
