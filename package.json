@@ -40,10 +40,10 @@
 	},
 	"devDependencies": {
 		"@effect/tsgo": "catalog:effect",
-		"@okfit/plugin": "^0.5.2",
-		"@savvy-web/silk": "^4.2.10",
+		"@okfit/plugin": "^0.5.3",
+		"@savvy-web/silk": "^4.2.11",
 		"@typescript/native-preview": "catalog:silk",
-		"@vitest-agent/plugin": "^5.0.0",
+		"@vitest-agent/plugin": "^5.0.1",
 		"tsx": "catalog:silk"
 	},
 	"engines": {
