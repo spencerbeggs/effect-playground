@@ -40,10 +40,10 @@
 	},
 	"devDependencies": {
 		"@effect/tsgo": "catalog:effect",
-		"@okfit/plugin": "^0.5.3",
-		"@savvy-web/silk": "^4.2.11",
+		"@okfit/plugin": "^0.5.4",
+		"@savvy-web/silk": "^4.2.13",
 		"@typescript/native-preview": "catalog:silk",
-		"@vitest-agent/plugin": "^5.0.1",
+		"@vitest-agent/plugin": "^5.0.2",
 		"tsx": "catalog:silk"
 	},
 	"engines": {
@@ -52,7 +52,7 @@
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "12.6.0",
+			"version": "12.8.1",
 			"onFail": "download"
 		},
 		"runtime": [
