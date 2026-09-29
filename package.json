@@ -43,7 +43,7 @@
 		"@okfit/plugin": "^0.5.4",
 		"@savvy-web/silk": "^4.2.13",
 		"@typescript/native-preview": "catalog:silk",
-		"@vitest-agent/plugin": "^5.0.2",
+		"@vitest-agent/plugin": "^5.0.3",
 		"tsx": "catalog:silk"
 	},
 	"engines": {
