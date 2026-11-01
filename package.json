@@ -39,10 +39,9 @@
 		"types:check": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@effect/tsgo": "catalog:effect",
+		"@effect/tsgo": "catalog:effected",
 		"@okfit/plugin": "^0.5.26",
 		"@savvy-web/silk": "^4.5.3",
-		"@typescript/native-preview": "catalog:silk",
 		"@vitest-agent/plugin": "^6.0.0",
 		"tsx": "catalog:silk"
 	},
