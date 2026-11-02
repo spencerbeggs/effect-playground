@@ -27,7 +27,7 @@
 	"devDependencies": {
 		"@effect/platform-node": "catalog:effected",
 		"@effect/vitest": "catalog:effected",
-		"@savvy-web/bundler": "^2.7.0",
+		"@savvy-web/bundler": "^2.7.3",
 		"@types/node": "catalog:silk",
 		"effect": "catalog:effected",
 		"typescript": "catalog:silk"
