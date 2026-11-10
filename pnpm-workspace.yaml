@@ -1,4 +1,7 @@
 autoInstallPeers: true
+catalogs:
+  docs:
+    rspress-plugin-mermaid: ^2.0.0
 configDependencies:
   "@effected/pnpm-plugin-effected": 0.26.0
   "@savvy-web/pnpm-plugin-silk": 0.53.0
