@@ -1,7 +1,7 @@
 {
 	"metadata": {
 		"toolPackage": "@microsoft/api-extractor",
-		"toolVersion": "7.59.0",
+		"toolVersion": "7.60.1",
 		"schemaVersion": 1011,
 		"oldestForwardsCompatibleVersion": 1001,
 		"tsdocConfig": {
@@ -167,7 +167,7 @@
 	},
 	"kind": "Package",
 	"canonicalReference": "@effected/package!",
-	"docComment": "",
+	"docComment": "/**\n * This file serves as the entry point for the Concept module.\n * It exports all public members of the Concept module.\n *\n * @packageDocumentation\n */\n",
 	"name": "@effected/package",
 	"preserveMemberOrder": false,
 	"members": [
@@ -179,7 +179,7 @@
 			"members": [
 				{
 					"kind": "Variable",
-					"canonicalReference": "@effected/package!Concept_base:var",
+					"canonicalReference": "@effected/package!~Concept_base:var",
 					"docComment": "",
 					"excerptTokens": [
 						{
@@ -244,7 +244,7 @@
 				{
 					"kind": "Class",
 					"canonicalReference": "@effected/package!Concept:class",
-					"docComment": "/**\n * The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety.\n *\n * @public\n */\n",
+					"docComment": "/**\n * The Concept class is a schema-based representation of a concept.\n * It extends the Schema.Class to provide validation and type safety.\n *\n * @public\n */\n",
 					"excerptTokens": [
 						{
 							"kind": "Content",
@@ -253,7 +253,7 @@
 						{
 							"kind": "Reference",
 							"text": "Concept_base",
-							"canonicalReference": "@effected/package!Concept_base"
+							"canonicalReference": "@effected/package!~Concept_base"
 						},
 						{
 							"kind": "Content",

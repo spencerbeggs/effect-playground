@@ -19,25 +19,20 @@
 		".": "./src/index.ts"
 	},
 	"scripts": {
-		"build:dev": "node savvy.build.ts --target dev",
-		"build:prod": "node savvy.build.ts --target prod",
-		"prepare": "turbo run build:dev",
+		"build": "effected package build",
 		"types:check": "tsc --noEmit"
 	},
 	"devDependencies": {
 		"@effect/platform-node": "catalog:effected",
 		"@effect/vitest": "catalog:effected",
-		"@savvy-web/bundler": "^2.7.4",
-		"@types/node": "catalog:silk",
+		"@types/node": "catalog:effected:build",
 		"effect": "catalog:effected",
-		"typescript": "catalog:silk"
+		"typescript": "catalog:effected:build"
 	},
 	"engines": {
 		"node": ">=24.11.0"
 	},
 	"publishConfig": {
-		"access": "public",
-		"directory": "dist/dev/pkg",
-		"linkDirectory": true
+		"access": "public"
 	}
 }

@@ -3,7 +3,7 @@
 	"tasks": {
 		"build": {
 			"cache": false,
-			"dependsOn": ["@effected/package#build:prod"],
+			"dependsOn": ["@effected/package#build"],
 			"outputLogs": "full",
 			"outputs": ["dist/**"]
 		},

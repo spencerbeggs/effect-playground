@@ -102,5 +102,5 @@
 			}
 		]
 	},
-	"extends": "@savvy-web/bundler/tsconfig/ecma.json"
+	"extends": "@effected/plugin/tsconfig/ecma.json"
 }

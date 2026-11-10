@@ -16,10 +16,8 @@
 	},
 	"type": "module",
 	"scripts": {
-		"build": "turbo run build:dev build:prod --log-order=grouped --log-prefix=none",
-		"build:dev": "node savvy.build.ts --target dev",
-		"build:prod": "node savvy.build.ts --target prod",
-		"ci:build": "CI=\"true\" turbo run build:dev build:prod --log-order=grouped --output-logs=full --log-prefix=none",
+		"build": "turbo run build --filter=!docs --log-order=grouped --log-prefix=none",
+		"ci:build": "CI=\"true\" turbo run build --filter=!docs --log-order=grouped --output-logs=full --log-prefix=none",
 		"ci:test": "CI=\"true\" vitest run --passWithNoTests",
 		"claude": "claude --plugin-dir plugin",
 		"dev": "turbo run dev --filter=docs",
@@ -44,7 +42,7 @@
 		"@okfit/plugin": "^0.5.30",
 		"@savvy-web/silk": "^4.5.7",
 		"@vitest-agent/plugin": "^6.0.6",
-		"tsx": "catalog:silk"
+		"tsx": "catalog:effected:build"
 	},
 	"engines": {
 		"node": ">=24.11.0"

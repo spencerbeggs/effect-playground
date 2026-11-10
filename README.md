@@ -47,8 +47,7 @@ You're welcome to clone or fork this template for your own use.
 ```text
 src/               Source code and tests
 lib/configs/       Shared tool configurations (commitlint, lint-staged, markdownlint)
-dist/dev/          Development build output
-dist/npm/          Production build output (published to registries)
+dist/prod/         Build output (published to registries)
 .github/workflows/ CI/CD workflows
 .changeset/        Changeset configuration
 ```

@@ -1,40 +1,67 @@
 ---
-title: "Concept | Class | API | @effected/package"
-description: "The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety."
+title: Concept | Class | API | @effected/package
+description: The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety.
 head:
-  - - meta
-    - property: "og:url"
-      content: "https://effected.spencerbeg.gs/package/api/class/concept"
-  - - meta
-    - property: "og:type"
-      content: article
-  - - meta
-    - property: "og:description"
-      content: "The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety."
-  - - meta
-    - property: "og:image"
-      content: "https://effected.spencerbeg.gs/og-image.png"
-  - - meta
-    - property: "og:image:alt"
-      content: "@effected/package - @effected/package API Documentation"
-  - - meta
-    - property: "article:published_time"
-      content: "2026-07-29T01:49:30.402Z"
-  - - meta
-    - property: "article:modified_time"
-      content: "2026-07-29T02:07:50.821Z"
-  - - meta
-    - property: "article:section"
-      content: Classes
-  - - meta
-    - property: "article:tag"
-      content: TypeScript
-  - - meta
-    - property: "article:tag"
-      content: API
-  - - meta
-    - property: "article:tag"
-      content: "@effected/package"
+- - link
+  - rel: canonical
+    href: https://effected.dev/package/api/class/concept
+- - meta
+  - property: og:url
+    content: https://effected.dev/package/api/class/concept
+- - meta
+  - property: og:type
+    content: article
+- - meta
+  - property: og:title
+    content: Concept
+- - meta
+  - property: og:site_name
+    content: "@effected/package"
+- - meta
+  - property: og:description
+    content: The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety.
+- - meta
+  - property: og:image
+    content: https://effected.dev/og-image.png
+- - meta
+  - property: og:image:alt
+    content: "@effected/package API documentation"
+- - meta
+  - property: article:published_time
+    content: "2026-07-29T01:49:30.402Z"
+- - meta
+  - property: article:modified_time
+    content: "2026-11-10T19:12:23.156Z"
+- - meta
+  - property: article:section
+    content: Classes
+- - meta
+  - property: article:tag
+    content: TypeScript
+- - meta
+  - property: article:tag
+    content: API
+- - meta
+  - property: article:tag
+    content: "@effected/package"
+- - meta
+  - name: twitter:card
+    content: summary_large_image
+- - meta
+  - name: twitter:title
+    content: Concept
+- - meta
+  - name: twitter:description
+    content: The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety.
+- - meta
+  - name: twitter:image
+    content: https://effected.dev/og-image.png
+- - meta
+  - name: twitter:image:alt
+    content: "@effected/package API documentation"
+- - script
+  - type: application/ld+json
+    children: "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://effected.dev/package/api#source\",\"@type\":\"SoftwareSourceCode\",\"name\":\"@effected/package\",\"url\":\"https://effected.dev/package/api\",\"description\":\"Scratchpad for building, versioning and publishing Effected packages.\",\"sameAs\":[\"https://github.com/spencerbeggs/effected/tree/main/packages/package#readme\"],\"license\":[\"https://spdx.org/licenses/MIT.html\"],\"author\":[{\"@id\":\"https://effected.dev/package/api#person-C.%20Spencer%20Beggs\"}],\"keywords\":[\"effect\",\"effected\"],\"version\":\"0.0.0\",\"codeRepository\":\"https://github.com/spencerbeggs/effected/tree/HEAD/packages/package\",\"programmingLanguage\":[\"TypeScript\"]},{\"@id\":\"https://effected.dev/package/api#person-C.%20Spencer%20Beggs\",\"@type\":\"Person\",\"name\":\"C. Spencer Beggs\",\"url\":\"https://spencerbeg.gs\"},{\"@id\":\"https://effected.dev/package/api/class/concept#article\",\"@type\":\"TechArticle\",\"name\":\"Concept\",\"url\":\"https://effected.dev/package/api/class/concept\",\"description\":\"The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety.\",\"isPartOf\":[{\"@id\":\"https://effected.dev/package/api#source\"}],\"mainEntity\":{\"@id\":\"https://effected.dev/package/api/class/concept#symbol\"},\"datePublished\":\"2026-11-10T19:12:23.156Z\",\"dateModified\":\"2026-11-10T19:12:23.156Z\",\"inLanguage\":\"en\",\"headline\":\"Concept\",\"articleSection\":[\"Classes\"]},{\"@id\":\"https://effected.dev/package/api/class/concept#symbol\",\"@type\":\"APIReference\",\"name\":\"Concept\",\"url\":\"https://effected.dev/package/api/class/concept\",\"description\":\"The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety.\",\"isPartOf\":[{\"@id\":\"https://effected.dev/package/api#source\"}],\"assemblyVersion\":\"0.0.0\",\"programmingModel\":\"TypeScript\"}]}"
 ---
 
 
@@ -46,11 +73,15 @@ import { ApiSignature, ApiMember, ApiExample } from "rspress-plugin-api-extracto
 
 The Concept class is a schema-based representation of a concept. It extends the Schema.Class to provide validation and type safety.
 
-<ApiSignature code={"class Concept extends Concept_base {\n}"} source={"class Concept extends Concept_base {\n}"} apiScope={"package"} />
+<ApiSignature code={"class Concept extends Concept_base {\n    static fromString(s: string): Concept;\n}"} source={"class Concept extends Concept_base {\n    static fromString(s: string): Concept;\n}"} apiScope={"package"} />
 
 ## Base Class
 
 `Concept` extends `Concept_base`, a compiler-generated declaration that is not exported from `@effected/package`.
 
 <ApiSignature code={"Concept_base: Schema.Class<Concept, Schema.Struct<{\n  readonly name: Schema.String;\n  readonly description: Schema.String;\n}>, {}>"} source={"import type { Schema } from \"effect\";\n// ---cut---\nConcept_base: Schema.Class<Concept, Schema.Struct<{\n  readonly name: Schema.String;\n  readonly description: Schema.String;\n}>, {}>"} apiScope={"package"} />
+
+## Static Methods
+
+<ApiMember code={"static fromString(s: string): Concept;"} source={"class Concept extends Concept_base {\nstatic fromString(s: string): Concept;\n}"} apiScope={"package"} memberName={"fromString"} summary={"Parses a `\"name: description\"` string into a [Concept](/package/api/class/concept)."} id={"fromstring"} hasParameters={false} />
 
