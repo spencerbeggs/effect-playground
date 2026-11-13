@@ -3,8 +3,8 @@ catalogs:
   docs:
     rspress-plugin-mermaid: ^2.0.0
 configDependencies:
-  "@effected/pnpm-plugin-effected": 0.26.4
-  "@savvy-web/pnpm-plugin-silk": 0.54.0
+  "@effected/pnpm-plugin-effected": 0.26.5
+  "@savvy-web/pnpm-plugin-silk": 0.54.1
 minimumReleaseAgeExclude:
   - "@effected/pnpm-plugin-effected"
   - "@savvy-web/pnpm-plugin-silk"
